@@ -1,0 +1,131 @@
+html, body {
+	font-family: 'Acme', sans-serif;
+	font-weight: 100;
+	height: 100vh;
+	margin: 0;
+}
+
+footer {
+	position: relative;
+}
+
+.fullHeight {
+	min-height: 100vh;
+}
+
+.regForm {
+	border-top: 1px solid gray
+}
+/*
+ *  Flex Layout Specifics
+*/
+main{
+  display:flex;
+  flex-direction:row;
+}
+.round{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  width:200px;
+  list-style:none;
+  padding:0;
+}
+.round .spacer{ flex-grow:1; }
+.round .spacer:first-child,
+.round .spacer:last-child{ flex-grow:0.5; }
+
+.round .game-spacer{
+flex-grow:1;
+}
+
+/*
+ *  General Styles
+*/
+
+li.game{
+  padding-left:20px;
+}
+
+li.game.winner{
+font-weight:bold;
+}
+li.game span{
+float:right;
+margin-right:5px;
+}
+
+li.game-top{ 
+border-bottom:1px solid #aaa; 
+}
+
+li.game-spacer{ 
+border-right:1px solid #aaa;
+min-height:40px;
+}
+
+li.game-bottom{ 
+border-top:1px solid #aaa;
+}
+
+@media (max-width: 576px) {
+/* Adding a fixed background to a mobile site*/
+body:before {
+	content: "";
+	display: block;
+	position: fixed; 
+	left: 0; 
+	top: 0;
+	bottom: 0;
+	width: 100%; 
+	height: 100%; 
+	z-index: -10; 
+	background: url(/images/spades-table.jpg) no-repeat center center; 
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover; 
+	background-size: cover; 
+}
+
+.container .overlayBgrd {
+	background: rgba(0, 0, 0, 0.3);
+	position: fixed; 
+	left: 0; 
+	top: 0;
+	bottom: 0;
+	width: 100%; 
+	height: 100%;
+	-webkit-background-size: cover; 
+	-moz-background-size: cover; 
+	-o-background-size: cover; 
+	background-size: cover; 
+}
+
+.menuMobile {
+	background: url("/images/spadeNav.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	height: 50px;
+	width: 50px;
+}
+
+#app-navbar-collapse {
+    background: linear-gradient(rgba(47, 79, 79, 0.2), rgba(47, 79, 79, 0.85), darkslategrey);
+    margin: 0% 12%;
+}
+
+a.navLink {
+    color: whitesmoke;
+    font-size: x-large;
+}
+
+.welcomeHeader h1 {
+    margin-top: -50%;
+}
+}
+@media (min-width: 1400px) {
+.card.large {
+    height: 850px;
+}
+}
