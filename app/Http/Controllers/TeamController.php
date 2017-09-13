@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('store');
+    }
+	
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+		$teams = Team::all();
+        return view('teams.index', compact('teams'));
     }
 
     /**
@@ -24,7 +35,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams.create');
     }
 
     /**
@@ -34,16 +45,21 @@ class TeamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {	
         $team = new Team;
 		$team->team_name = $request->team_name;
 		$team->player_1 = $request->player1;
 		$team->player_2 = $request->player2;
 		$team->email = $request->email;
 		
-		$team->save();
-		
-		return view('payment', compact('team'));
+		if($request->pif == null) {
+			$team->save();
+			return view('payment', compact('team'));
+		} else {
+			$team->pif = $request->pif;
+			$team->save();
+			return redirect()->action('TeamController@index');
+		}
     }
 
     /**
@@ -65,7 +81,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+		$teams = Team::findOrfail($team)->first();
+        return view('teams.edit', compact('teams'));
     }
 
     /**
@@ -77,7 +94,16 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $team->player_1 = $request->player_1;
+        $team->player_2 = $request->player_2;
+        $team->email = $request->email;
+        $team->team_name = $request->team_name;
+        $team->pif = $request->pif;
+        $team->save();
+		
+		// dd($request);
+		
+		return redirect()->action('TeamController@edit', [$team]);
     }
 
     /**
@@ -88,6 +114,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+		return redirect()->action('TeamController@index');
     }
 }

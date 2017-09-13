@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             $table->integer('total_rounds');
             $table->char('playin_games', 1)->default('N');
             $table->char('playin_games_complete', 1)->default('N');
+            $table->char('start_tourny', 1)->default('N');
             $table->string('champion', 50)->nullable();
             $table->integer('champion_id');
             $table->timestamps();

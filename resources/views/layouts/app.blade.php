@@ -34,11 +34,12 @@
 						</button>
 
 						<!-- Branding Image -->
-						<a class="navbar-brand d-none d-sm-none" href="{{ url('/') }}">
+						<a class="navbar-brand d-none" href="{{ url('/') }}">
 							{{ config('app.name', 'Laravel') }}
 						</a>
 					</div>
-
+					
+					<!--- Mobile collapsable nav -->
 					<div class="collapse navbar-collapse" id="app-navbar-collapse">
 						<!-- Left Side Of Navbar -->
 						<ul class="nav navbar-nav">
@@ -54,6 +55,10 @@
 								<li class="text-center"><a class="navLink" href="{{ route('tournament') }}">Tournament</a></li>
 								<li class="text-center"><a class="navLink" href="{{ route('rules') }}">Rules</a></li>
 							@else
+								<li class="text-center"><a class="navLink" href="/home">Home</a></li>
+								<li class="text-center"><a class="navLink" href="/teams">Teams</a></li>
+								<li class="text-center"><a class="navLink" href="/games">Games</a></li>
+								<li class="text-center"><a class="navLink" href="/setting">Settings</a></li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 										{{ Auth::user()->name }} <span class="caret"></span>
@@ -76,6 +81,31 @@
 							@endif
 						</ul>
 					</div>
+					
+					<!-- Default Nav -->
+					<ul class="d-none d-sm-flex nav nav-pills nav-fill w-100">
+						<!-- Authentication Links -->
+						@if (Auth::guest())
+							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('welcome') }}">Home</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('registration') }}">Register</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('tournament') }}">Tournament</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('rules') }}">Rules</a></li>
+						@else
+							<li class="text-center nav-item"><a class="navLink text-white" href="/home">Home</a></li>
+							<li class="text-center nav-item"><a class="navLink text-white" href="/teams">Teams</a></li>
+							<li class="text-center nav-item"><a class="navLink text-white" href="/games">Games</a></li>
+							<li class="text-center nav-item"><a class="navLink text-white" href="/setting">Settings</a></li>
+							<li class="text-center nav-item">
+								<div class="">
+									<a class="navLink text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+									
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								</div>
+							</li>
+						@endif
+					</ul>
 				</nav>
 			</div>
 		</div>
@@ -96,6 +126,8 @@
 	</footer>
 	<div class="" style=""></div>
 	<script src="/js/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="/js/myjs.js"></script>
 	
 	@yield('footer')

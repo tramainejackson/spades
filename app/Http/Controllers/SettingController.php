@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+		$setting = Setting::all()->first();
+        return view('setting.index', compact('setting'));
     }
 
     /**
@@ -57,7 +68,8 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        //
+        $setting = Setting::findOrFail($setting)->first();
+        return view('setting.edit', compact('setting'));
     }
 
     /**
@@ -69,7 +81,11 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        $setting->start_tourny = $request->start_tourny;
+		$setting->create_tourney_settings();
+		$setting->save();
+		
+		return redirect()->action('SettingController@edit', [$setting]);
     }
 
     /**

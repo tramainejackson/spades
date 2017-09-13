@@ -1,10 +1,5 @@
 @extends('layouts.app')
 	@section('content')
-		@php
-			$settings = \App\Setting::findOrfail(1);
-			$games = \App\Game::all();
-			$teams = \App\Team::all();
-		@endphp
 		<div class="view_schedule">
 			<div class="row">
 				<div class="col text-white">
@@ -12,14 +7,14 @@
 				</div>
 			</div>
 			@if($settings->start_tourny == "Y")
-				@if($settings->champion != null)
+				@if($settings->playin_games_complete != null)
 					@php $champTeam = \App\Team::where('id', $settings->champion_id)->first(); @endphp
-					<div class="col col-12 p-5 text-center champDiv">
+					<div class="col col-12">
 						<div class="">
-							<h3 class="display-2">Champions</h3>
+							<h3 class="">Champions</h3>
 						</div>
 						<div class="">
-							<h4 class="display-3">{{ $champTeam->team_name }}</h4>
+							<h4 class="">{{ $champTeam->team_name }}</h4>
 						</div>
 						<div class="">
 							<p class="">{{ $champTeam->player_1 }}</p>
@@ -27,16 +22,11 @@
 						</div>
 					</div>
 				@endif
-				@if(($settings->playin_games_complete == 'Y' || $settings->playin_games_complete == 'N') && $settings->playin_games == 'N')
+				@if($settings->playin_games_complete == 'Y' && $settings->playin_games == 'N')
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
 					@php $teams = $settings->total_teams; @endphp
-					<div class="row mt-5 mb-3">
-						<div class="col">
-							<h2 class="text-white text-center display-4">Bracketology</h2>
-						</div>
-					</div>
-					<div class="row playoffBracket text-white">
+					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament">
 								@while($rounds > 0)
@@ -46,10 +36,11 @@
 										@php $playoffSchedule = \App\Game::where('round', $x)->get(); @endphp
 										@if($playoffSchedule->isNotEmpty())
 											@while($playoffSchedule->isNotEmpty())
-												@php $roundGames = $playoffSchedule->count(); @endphp
+												@php $roundGames = count($playoffSchedule); @endphp
 												@if($roundGames == ($teams/2))
 													<?php if($roundGames == 1) { ?>
-														<?php $playoffs = $playoffSchedule->shift(); ?>
+														<?php $playoffs = $playoffSchedule; ?>
+														<?php $playoffSchedule = array(); ?>
 
 														<li class="spacer">&nbsp;</li>
 														
@@ -162,76 +153,57 @@
 					@endif
 					
 					@if($nonPlayInGames->isNotEmpty())
-						@for($i=$rounds; $i >= 0; $i--)
-							@php $roundGames = \App\Game::where('round', $i)->get(); @endphp	
-							@if($roundGames->isNotEmpty())
-								<div class="row">
-									<div class="col ">
-										@if($i != $rounds)
-											<h2 class="roundHeader text-center p-3 my-3">Round {{ $i }} Games</h2>
-										@else
-											<h2 class="roundHeader text-center p-3 my-3">Championship Game</h2>
-										@endif
+						<div class="row">
+							@foreach($nonPlayInGames as $game)
+								<div class="col col-4 my-3">
+									<div class="card">
+										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
+											<h2 class="text-center">
+											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
+											Round {{ $game->round }} Game</h2>
+										</div>
+										<?php if($game->game_complete == "Y") { ?>
+											<?php if($game->forfeit == "Y") { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
+											<?php } else { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
+											<?php } ?>
+										<?php } else { ?>
+											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
+										<?php } ?>
 									</div>
 								</div>
-								<div class="row">
-									@foreach($roundGames as $game)
-										<div class="col col-4 my-3">
-											<div class="card">
-												<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
-													<h2 class="text-center">Round {{ $game->round }} Game</h2>
-												</div>
-												<div class="card-body">
-													<p class="text-center">{{ $game->away_team}} vs {{ $game->home_team}}</p>
-													
-													@if($game->game_complete == "Y")
-														@if($game->forfeit == "Y")
-															<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
-														@else
-															<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
-														@endif
-													@endif
-												</div>
-											</div>
-										</div>
-									@endforeach	
-								</div>
-							@endif
-						@endfor
+							@endforeach	
+						</div>
 					@endif
 					
 					@if($getPlayInGames->isNotEmpty())
 						<div class="row">
 							@foreach($getPlayInGames as $game)
 								<div class="col col-12">
-									<h2 class="roundHeader text-center p-3 my-3">Play In Games</h2>
+									<h3 class="">Play In Games</h3>
 								</div>
 								<div class="col col-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
-											<h2 class="text-center">Play In Game</h2>
+											<h2 class="text-center">
+											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
+											Play In Game</h2>
 										</div>
-										<div class="card-body">
-											<p class="text-center">{{ $game->away_team}} vs {{ $game->home_team}}</p>
-											
-											@if($game->game_complete == "Y")
-												<?php if($game->forfeit == "Y") { ?>
-													<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
-												<?php } else { ?>
-													<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
-												<?php } ?>
-											@endif
-										</div>
+										<?php if($game->game_complete == "Y") { ?>
+											<?php if($game->forfeit == "Y") { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
+											<?php } else { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
+											<?php } ?>
+										<?php } else { ?>
+											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
+										<?php } ?>
 									</div>
 								</div>
 							@endforeach	
 						</div>
 					@endif
-					<div class="row mt-5 mb-3">
-						<div class="col">
-							<h2 class="text-white text-center display-4">Bracketology</h2>
-						</div>
-					</div>
 					<div class="row playoffBracket text-white">
 						<div class="col">
 							<main id="tournament">
@@ -345,40 +317,29 @@
 							</main>
 						</div>
 					</div>
-				@else
-					@php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); @endphp
-					@if($getPlayInGames->isNotEmpty())
-						<div class="divClass">
-							<div class="col">
-								<p class="text-center text-warning">*Once playin games complete, tournament bracket will be posted</p>
-							</div>
+				@elseif($settings->playin_games_complete == 'N' && $settings->playin_games == 'N')
+					<div class="row text-white">
+						<div class="col" style="position:relative">
+							<p class="">Tournament bracket will be displayed once all teams have registered.</p>
 						</div>
+						<div class="col">
+							<p class="">Current Teams:&nbsp;<span>{{ $teams->count() }}</span></p>
+							<p class="">Available Teams Remaining:&nbsp;<span>{{ (64 - $teams->count()) }}</span></p>
+						</div>
+					</div>
+				@else
+					<?php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); ?>
+					<?php if($getPlayInGames->isNotEmpty()) { ?>
 						<div class="row">
 							@foreach($getPlayInGames as $game)
-								<div class="col col-12">
-									<h2 class="roundHeader text-center p-3 my-3">Play In Games</h2>
+								<div class="col">
+									<h2 class="">{{ $game->home_team }}</h2>
+									<h4 class="">vs</h4>
+									<h2 class="">{{ $game->away_team }}</h2>
 								</div>
-								<div class="col col-4 my-3">
-									<div class="card">
-										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
-											<h2 class="text-center">Play In Game</h2>
-										</div>
-										<div class="card-body">
-											<p class="text-center">{{ $game->away_team}} vs {{ $game->home_team}}</p>
-											
-											@if($game->game_complete == "Y")
-												<?php if($game->forfeit == "Y") { ?>
-													<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
-												<?php } else { ?>
-													<p class="text-center"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
-												<?php } ?>
-											@endif
-										</div>
-									</div>
-								</div>
-							@endforeach	
+							@endforeach
 						</div>
-					@endif
+					<?php } ?>
 					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament" class="text-white" style="position:relative">
@@ -491,123 +452,10 @@
 			@else
 				<div class="row">
 					<div class="col">
-						<h3 class="">The tournament schedule will be posted on (Add Date) once registration has closed and bracket has been completed. If there is an odd number of teams, there will be playin games for the teams who register last.</h3>
-					</div>
-				</div>
-				<div class="row playoffBracket">
-					<div class="col">
-						<main id="tournament" class="text-white" style="position:relative">
-							<ul class="round round-1">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top ">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom winner">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-2">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top ">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom winner">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top ">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom winner">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-3">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top ">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom winner">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-4">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top winner">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom ">TBD <span>0</span></li>
-								
-								<li class="spacer">&nbsp;</li>
-							</ul>		
-						</main>
+						<p class="text-white">You have started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</p>
 					</div>
 				</div>
 			@endif
-			<div class="row">
-				<div class="col">
-					<p class="text-white">*Single game elimination for every round.</p>
-				</div>
-			</div>
 		</div>
 	@endsection
 	

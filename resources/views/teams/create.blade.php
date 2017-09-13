@@ -1,15 +1,15 @@
 @extends('layouts.app')
 	@section('content')
-		<div class="row flex-column align-items-center justify-content-center" style="position:relative">
-			<div class="text-white my-4 display-4">
-				<h1 class="display-3">Registration</h1>
+		<div class="row">
+			<div class="col text-white">
+				<div class="" style="">
+					<h1 class="display-4 my-4 text-center">Create New Team</h1>
+				</div>
 			</div>
-			<div class="text-white px-3">
-				<p class="px-sm-5" style="font-size:125%;">The entry fee for every team will be $50. It is first come first serve and registration will close once we have reached 64 teams. The tournament is single elimination</p>
-			</div>
-			<div class="fullHeight d-flex flex-column align-items-center justify-content-center m-3 px-3 regForm">
+		</div>
+		<div class="row">
+			<div class="col text-white py-3">
 				<div class="">
-					<h2 class="text-white">Registration Form</h2>
 					{!! Form::open(['action' => 'TeamController@store']) !!}
 						<div class="form-group">
 							{{ Form::label('email', 'Email Address', ['class' => 'form-control-label text-white']) }}
@@ -28,10 +28,22 @@
 							{{ Form::text('player2', '', ['class' => 'form-control', 'required']) }}
 						</div>
 						<div class="form-group">
-							{{ Form::submit('Next', ['class' => 'form-control btn btn-primary']) }}
+							{{ Form::label('player2', 'Paid in Full', ['class' => 'd-block form-control-label text-white']) }}
+							
+							<div class="btn-group">
+								<button type="button" class="btn">
+									<input type="checkbox" name="pif" value="Y" hidden />Yes
+								</button>
+								<button type="button" class="btn btn-danger">
+									<input type="checkbox" name="pif" value="N" hidden checked />No
+								</button>
+							</div>
+						</div>
+
+						<div class="form-group">
+							{{ Form::submit('Add', ['class' => 'form-control btn btn-primary']) }}
 						</div>
 					{!! Form::close() !!}
-					<p class="finePrint text-white mt-4">We will be accepting payments via Visa, Paypal, Cash App. Once the registration form is completed, you will be redirected to choose your choice of payment.</p>
 				</div>
 			</div>
 		</div>
@@ -39,6 +51,9 @@
 	
 	@section('footer')
 		<script type="text/javascript">
-			$('nav ul li:nth-of-type(2) a').addClass('active');			
+			$('nav ul li:nth-of-type(4) a').addClass('active');
+
+			// Dropdown menu toggle init
+			$('.dropdown-toggle').dropdown();			
 		</script>
 	@endsection

@@ -5,6 +5,10 @@ html, body {
 	margin: 0;
 }
 
+.container {
+	
+}
+
 footer {
 	position: relative;
 }
@@ -15,6 +19,18 @@ footer {
 
 .regForm {
 	border-top: 1px solid gray
+}
+
+.champDiv {
+    background: #ff8d01;
+}
+
+h2.roundHeader {
+    background: aquamarine;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
 /*
  *  Flex Layout Specifics
@@ -123,9 +139,36 @@ a.navLink {
 .welcomeHeader h1 {
     margin-top: -50%;
 }
+
+.playoffBracket {
+	position: relative;
+    color: white;
+    overflow-x: scroll;
 }
-@media (min-width: 1400px) {
-.card.large {
-    height: 850px;
+
+.round {
+	width: -webkit-fill-available;
+}}
+
+@media (min-width: 992px) {
+html, body {
+	background: url(/images/spades-table.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.welcomeHeader h2 {
+    font-size: 425%;
+}
+
+.welcomeHeader p {
+    font-size: 150%;
+}
+
+.nav-link {
+	font-size: 115%;
 }
 }

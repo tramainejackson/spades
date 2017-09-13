@@ -23,10 +23,16 @@ Route::get('/rules', function () {
     return view('rules');
 })->name('rules');
 
-Route::get('/tournament', '')->name('tournament');
+Route::get('/tournament', function () {
+    return view('tournament');
+})->name('tournament');
+
+Route::resource('games', 'GameController');
+
+Route::resource('teams', 'TeamController');
+
+Route::resource('setting', 'SettingController');
 
 Auth::routes();
-
-Route::post('/registration', 'TeamController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');

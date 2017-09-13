@@ -28,7 +28,7 @@ class CreateGamesTable extends Migration
             $table->integer('losing_team_id');
             $table->char('forfeit', 1);
             $table->char('game_complete', 1);
-            $table->char('play_in_game', 1);
+            $table->char('playin_game', 1);
             $table->timestamps();
         });
     }
