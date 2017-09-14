@@ -172,3 +172,9 @@ html, body {
 	font-size: 115%;
 }
 }
+
+@media (min-width: 1200px) {
+	form *, main {
+		font-size: 115% !important;
+	}
+}

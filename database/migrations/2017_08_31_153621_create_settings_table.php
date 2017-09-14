@@ -15,14 +15,14 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('total_teams');
-            $table->integer('teams_with_bye');
-            $table->integer('total_rounds');
+            $table->integer('total_teams')->nullable();
+            $table->integer('teams_with_bye')->nullable();
+            $table->integer('total_rounds')->nullable();
             $table->char('playin_games', 1)->default('N');
             $table->char('playin_games_complete', 1)->default('N');
             $table->char('start_tourny', 1)->default('N');
             $table->string('champion', 50)->nullable();
-            $table->integer('champion_id');
+            $table->integer('champion_id')->nullable();
             $table->timestamps();
         });
     }

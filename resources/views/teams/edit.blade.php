@@ -1,15 +1,16 @@
 @extends('layouts.app')
 	@section('content')
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col text-white">
 				<div class="" style="">
-					<h1 class="display-4 my-4 text-center">Edit Teams</h1>
-					<a href="{{ route('teams.create') }}" class="btn btn-success">Add Team</a>
+					<h1 class="display-4 my-4 text-center">
+						<a href="{{ route('teams.create') }}" class="btn btn-success float-right">Add Team</a>
+					Edit Teams</h1>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-4 text-white">
+			<div class="col text-white">
 				{!! Form::model($teams, ['action' => ['TeamController@update', $teams->id], 'method' => 'PATCH']) !!}
 					<div class="form-group">
 						{{ Form::label('email', 'Email Address', ['class' => 'form-control-label text-white']) }}
@@ -34,14 +35,14 @@
 							<button type="button" class="btn {{ $teams->pif == 'Y' ? 'btn-success active' : '' }}">
 								<input type="checkbox" name="pif" value="Y" hidden {{ $teams->pif == 'Y' ? 'checked' : '' }} />Yes
 							</button>
-							<button type="button" class="btn {{ $teams->pif == 'N' ? 'btn-danger active' : '' }}">
+							<button type="button" class="btn px-3 {{ $teams->pif == 'N' ? 'btn-danger active' : '' }}">
 								<input type="checkbox" name="pif" value="N" hidden {{ $teams->pif == 'N' ? 'checked' : '' }} />No
 							</button>
 						</div>
 					</div>
 					<div class="form-group">
 						{{ Form::submit('Update', ['class' => 'form-control btn btn-primary']) }}
-						<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#delete_modal">Delete</button>
+						<button class="btn btn-danger w-100 mt-2" type="button" data-toggle="modal" data-target="#delete_modal">Delete</button>
 					</div>
 				{!! Form::close() !!}
 			</div>

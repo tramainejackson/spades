@@ -147,7 +147,7 @@ class Setting extends Model
 			$this->playin_games = "N";
 			$this->playin_games_complete = "Y";
 			$this->champion = NULL;
-			$this->champion_team_id = NULL;
+			$this->champion_id = NULL;
 		}
 	}
 }

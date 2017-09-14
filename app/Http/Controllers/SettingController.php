@@ -24,8 +24,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-		$setting = Setting::all()->first();
-        return view('setting.index', compact('setting'));
+		$setting = \App\Setting::where('id', 1)->first();
+		$teams = \App\Team::all();
+        return view('setting.index', compact('setting', 'teams'));
     }
 
     /**
@@ -69,7 +70,8 @@ class SettingController extends Controller
     public function edit(Setting $setting)
     {
         $setting = Setting::findOrFail($setting)->first();
-        return view('setting.edit', compact('setting'));
+		$teams = \App\Team::all();
+        return view('setting.edit', compact('setting', 'teams'));
     }
 
     /**

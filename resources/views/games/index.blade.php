@@ -7,7 +7,7 @@
 				</div>
 			</div>
 			@if($settings->start_tourny == "Y")
-				@if($settings->playin_games_complete != null)
+				@if($settings->champion_id != null)
 					@php $champTeam = \App\Team::where('id', $settings->champion_id)->first(); @endphp
 					<div class="col col-12">
 						<div class="">
@@ -28,7 +28,7 @@
 					@php $teams = $settings->total_teams; @endphp
 					<div class="row playoffBracket">
 						<div class="col">
-							<main id="tournament">
+							<main id="tournament" class="text-white">
 								@while($rounds > 0)
 									@php $totalGames = ($teams/2); @endphp
 									<ul class="round round-{{ $x }}">
@@ -206,7 +206,7 @@
 					@endif
 					<div class="row playoffBracket text-white">
 						<div class="col">
-							<main id="tournament">
+							<main id="tournament" class="text-white">
 								@while($rounds > 0)
 									@php $totalGames = ($teams/2); @endphp
 									<ul class="round round-{{ $x }}">
@@ -449,10 +449,17 @@
 						</div>
 					</div>
 				@endif
+				@if($games->isEmpty())
+					<div class="row">
+						<div class="col">
+							<h2 class="text-white m-4">You do not have any games yet. Once you are ready to have a games created, go back to settings and start the tournament</h2>
+						</div>
+					</div>
+				@endif
 			@else
 				<div class="row">
 					<div class="col">
-						<p class="text-white">You have started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</p>
+						<p class="text-white">You have not started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</p>
 					</div>
 				</div>
 			@endif

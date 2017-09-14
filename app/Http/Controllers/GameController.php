@@ -24,7 +24,7 @@ class GameController extends Controller
      */
     public function index(Request $request)
     {
-		$settings = \App\Setting::findOrfail(1);
+		$settings = \App\Setting::where('id', 1)->first();
 		$games = \App\Game::all();
 		$teams = \App\Team::all();
 		
