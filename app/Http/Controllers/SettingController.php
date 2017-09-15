@@ -84,10 +84,14 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         $setting->start_tourny = $request->start_tourny;
-		$setting->create_tourney_settings();
+		
+		if($setting->start_tourny == "Y") {
+			$setting->create_tourney_settings();
+		}
+		
 		$setting->save();
 		
-		return redirect()->action('SettingController@edit', [$setting]);
+		return redirect()->action('SettingController@index');
     }
 
     /**

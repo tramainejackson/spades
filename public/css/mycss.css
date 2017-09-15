@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 html, body {
 	font-family: 'Acme', sans-serif;
 	font-weight: 100;
@@ -84,6 +86,16 @@ li.game-bottom{
 border-top:1px solid #aaa;
 }
 
+.teamRegPayment {
+    background: beige;
+}
+
+.teamRegPayment h2 {
+    background: darkgray;
+	margin: -0.5rem;
+	color: whitesmoke;
+}
+
 @media (max-width: 576px) {
 /* Adding a fixed background to a mobile site*/
 body:before {
@@ -160,6 +172,10 @@ html, body {
     background-attachment: fixed;
 }
 
+#app {
+	margin-bottom: 200px;
+}
+
 .welcomeHeader h2 {
     font-size: 425%;
 }
@@ -171,10 +187,25 @@ html, body {
 .nav-link {
 	font-size: 115%;
 }
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 10;
+}
 }
 
 @media (min-width: 1200px) {
 	form *, main {
 		font-size: 115% !important;
+	}
+	
+	form input {
+		color: black !important;
+	}
+	
+	form input[type="submit"] {
+		color: white !important;
 	}
 }

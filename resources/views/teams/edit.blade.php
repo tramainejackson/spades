@@ -88,7 +88,7 @@
 						{!! Form::model($teams, ['action' => ['TeamController@destroy', $teams->id], 'method' => 'DELETE']) !!}
 							<div class="form-group">
 								{{ Form::submit('Delete', ['class' => 'form-control btn btn-danger']) }}
-								<button class="btn btn-warning form-control " type="button">Cancel</button>
+								<button class="btn btn-warning form-control" data-dismiss="modal" type="button">Cancel</button>
 							</div>
 						{!! Form::close() !!}
 					</div>

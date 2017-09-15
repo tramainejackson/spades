@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use App\Mail\Confirmation;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -54,6 +56,7 @@ class TeamController extends Controller
 		
 		if($request->pif == null) {
 			$team->save();
+			// Mail::to($team->email)->send(new Confirmation($team));
 			return view('payment', compact('team'));
 		} else {
 			$team->pif = $request->pif;

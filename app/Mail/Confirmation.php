@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Team;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +17,9 @@ class Confirmation extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Team $team)
     {
-        //
+        $this->team = $team;
     }
 
     /**
@@ -28,6 +29,6 @@ class Confirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.confirm');
     }
 }

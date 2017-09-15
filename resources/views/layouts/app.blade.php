@@ -55,7 +55,6 @@
 								<li class="text-center"><a class="navLink" href="{{ route('tournament') }}">Tournament</a></li>
 								<li class="text-center"><a class="navLink" href="{{ route('rules') }}">Rules</a></li>
 							@else
-								<li class="text-center"><a class="navLink" href="/home">Home</a></li>
 								<li class="text-center"><a class="navLink" href="/teams">Teams</a></li>
 								<li class="text-center"><a class="navLink" href="/games">Games</a></li>
 								<li class="text-center"><a class="navLink" href="/setting">Settings</a></li>
@@ -91,7 +90,6 @@
 							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('tournament') }}">Tournament</a></li>
 							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('rules') }}">Rules</a></li>
 						@else
-							<li class="text-center nav-item"><a class="navLink text-white" href="/home">Home</a></li>
 							<li class="text-center nav-item"><a class="navLink text-white" href="/teams">Teams</a></li>
 							<li class="text-center nav-item"><a class="navLink text-white" href="/games">Games</a></li>
 							<li class="text-center nav-item"><a class="navLink text-white" href="/setting">Settings</a></li>

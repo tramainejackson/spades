@@ -9,12 +9,12 @@
 			@if($settings->start_tourny == "Y")
 				@if($settings->champion_id != null)
 					@php $champTeam = \App\Team::where('id', $settings->champion_id)->first(); @endphp
-					<div class="col col-12">
+					<div class="col col-12 p-5 text-center champDiv">
 						<div class="">
-							<h3 class="">Champions</h3>
+							<h3 class="display-2">Champions</h3>
 						</div>
 						<div class="">
-							<h4 class="">{{ $champTeam->team_name }}</h4>
+							<h4 class="display-3">{{ $champTeam->team_name }}</h4>
 						</div>
 						<div class="">
 							<p class="">{{ $champTeam->player_1 }}</p>
@@ -25,7 +25,7 @@
 				@if($settings->playin_games_complete == 'Y' && $settings->playin_games == 'N')
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $settings->total_teams; @endphp
+					@php $teams = $settings->total_tourney_teams; @endphp
 					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament" class="text-white">
@@ -145,7 +145,7 @@
 					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $settings->total_teams; @endphp
+					@php $teams = $settings->total_tourney_teams; @endphp
 					
 					@if(fmod($teams, 2) != 0)
 						@php $teams = 32; @endphp
@@ -179,10 +179,10 @@
 					
 					@if($getPlayInGames->isNotEmpty())
 						<div class="row">
+							<div class="col col-12">
+								<h3 class="text-white">Play In Games</h3>
+							</div>
 							@foreach($getPlayInGames as $game)
-								<div class="col col-12">
-									<h3 class="">Play In Games</h3>
-								</div>
 								<div class="col col-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
@@ -328,18 +328,37 @@
 						</div>
 					</div>
 				@else
-					<?php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); ?>
-					<?php if($getPlayInGames->isNotEmpty()) { ?>
+					@php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); @endphp
+					@if($getPlayInGames->isNotEmpty())
 						<div class="row">
+							<div class="col col-12">
+								<h3 class="text-white">Play In Games</h3>
+							</div>
 							@foreach($getPlayInGames as $game)
-								<div class="col">
-									<h2 class="">{{ $game->home_team }}</h2>
-									<h4 class="">vs</h4>
-									<h2 class="">{{ $game->away_team }}</h2>
+								<div class="col col-4 my-3">
+									<div class="card">
+										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
+											<h2 class="text-center">
+											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
+											Play In Game</h2>
+										</div>
+										<?php if($game->game_complete == "Y") { ?>
+											<?php if($game->forfeit == "Y") { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
+											<?php } else { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
+											<?php } ?>
+										<?php } else { ?>
+											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
+										<?php } ?>
+									</div>
 								</div>
 							@endforeach
+							<div class="col col-12">
+								<p class="text-warning">*Once all playin games complete, tournament bracket will be generated</p>
+							</div>
 						</div>
-					<?php } ?>
+					@endif
 					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament" class="text-white" style="position:relative">
