@@ -1,0 +1,15 @@
+------------------------------------
+		Spades Tournament
+------------------------------------
+
+Add contact page
+Style the edit game page
+Associate spades2spades email
+Add a question form to the footer
+Make https
+If team is removed, redo tournament?
+Correct email issue
+Add redirect confirmations(success or error)
+Style a little better and update mobile style
+Done: Stop registration at a certain number?
+Done: Make footer stick to bottom when no information on page

@@ -14,10 +14,6 @@
 					<input type="number" name="total_teams" class="form-control" value="{{ $teams->count() == null ? 0 : $teams->count() }}" disabled />
 				</div>
 				<div class="form-group">
-					{{ Form::label('total_teams', 'Total Tourney Teams', ['class' => 'form-control-label text-white']) }}
-					<input type="number" name="total_tourney_teams" class="form-control" value="{{ $setting->total_tourney_teams == null ? 0 : $setting->total_tourney_teams }}" disabled />
-				</div>
-				<div class="form-group">
 					{{ Form::label('total_rounds', 'Total Rounds', ['class' => 'form-control-label text-white']) }}
 					<input type="number" name="total_rounds" class="form-control" value="{{ $setting->total_rounds == null ? 0 : $setting->total_rounds }}" disabled />
 				</div>

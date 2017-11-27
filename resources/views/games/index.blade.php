@@ -364,9 +364,6 @@
 								<h3 class="text-white">Play In Games</h3>
 							</div>
 							@foreach($getPlayInGames as $game)
-								<div class="col col-12">
-									<h3 class="">Play In Games</h3>
-								</div>
 								<div class="col col-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
@@ -374,15 +371,16 @@
 											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
 											Play In Game</h2>
 										</div>
-										<?php if($game->game_complete == "Y") { ?>
-											<?php if($game->forfeit == "Y") { ?>
-												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
-											<?php } else { ?>
-												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
-											<?php } ?>
-										<?php } else { ?>
+										
+										@if($game->game_complete == "Y")
+											@if($game->forfeit == "Y")
+												<p class="text-center pt-3">{{ $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit" }}</p>
+											@else
+												<p class="text-center pt-3">{{ $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score }}</p>
+											@endif
+										@else
 											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
-										<?php } ?>
+										@endif
 									</div>
 								</div>
 							@endforeach	
@@ -544,7 +542,7 @@
 		<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
 			<p class="">10% of all proceeds will be donated to charity</p>
 			<p class="">Sponcered By: </p>
-			<p class="">Organized By: </p>
+			<p class="">Organized By: Montrell Duckett and Tramaine Jackson</p>
 			<div class="">
 				<div class="">
 					<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>

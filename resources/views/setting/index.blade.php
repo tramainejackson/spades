@@ -18,14 +18,6 @@
 			</div>
 			<div class="row text-white">
 				<div class="col col-6">
-					<p class="text-right">Total Tournament Teams:</p>
-				</div>
-				<div class="col col-6">
-					<p class="">{{ $setting->total_tourney_teams == null ? "Tournament schedule not generated yet" : $setting->total_tourney_teams }}</p>
-				</div>
-			</div>
-			<div class="row text-white">
-				<div class="col col-6">
 					<p class="text-right">Total Rounds:</p>
 				</div>
 				<div class="col col-6">
