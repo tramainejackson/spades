@@ -83,6 +83,15 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
+		$tournyGames = \App\Game::all();
+		
+		if($setting->start_tourny == "N" && $request->start_tourny == "Y") {
+		// dd($tournyGames);
+			if($tournyGames->count() > 0) {
+				$setting->remove_active_games();
+			}
+		}
+
         $setting->start_tourny = $request->start_tourny;
 		
 		if($setting->start_tourny == "Y") {

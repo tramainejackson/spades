@@ -23,9 +23,36 @@
 					</div>
 				@endif
 				@if($settings->playin_games_complete == 'Y' && $settings->playin_games == 'N')
+					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $settings->total_tourney_teams; @endphp
+					@php $teams = $settings->total_teams; @endphp
+					
+					@if($nonPlayInGames->isNotEmpty())
+						<div class="row">
+							@foreach($nonPlayInGames as $game)
+								<div class="col col-4 my-3">
+									<div class="card">
+										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
+											<h2 class="text-center">
+											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
+											Round {{ $game->round }} Game</h2>
+										</div>
+										<?php if($game->game_complete == "Y") { ?>
+											<?php if($game->forfeit == "Y") { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
+											<?php } else { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
+											<?php } ?>
+										<?php } else { ?>
+											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
+										<?php } ?>
+									</div>
+								</div>
+							@endforeach	
+						</div>
+					@endif
+
 					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament" class="text-white">
@@ -328,13 +355,18 @@
 						</div>
 					</div>
 				@else
+					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); @endphp
+
 					@if($getPlayInGames->isNotEmpty())
 						<div class="row">
 							<div class="col col-12">
 								<h3 class="text-white">Play In Games</h3>
 							</div>
 							@foreach($getPlayInGames as $game)
+								<div class="col col-12">
+									<h3 class="">Play In Games</h3>
+								</div>
 								<div class="col col-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
@@ -353,12 +385,35 @@
 										<?php } ?>
 									</div>
 								</div>
-							@endforeach
-							<div class="col col-12">
-								<p class="text-warning">*Once all playin games complete, tournament bracket will be generated</p>
-							</div>
+							@endforeach	
 						</div>
 					@endif
+					
+					@if($nonPlayInGames->isNotEmpty())
+						<div class="row">
+							@foreach($nonPlayInGames as $game)
+								<div class="col col-4 my-3">
+									<div class="card">
+										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
+											<h2 class="text-center">
+											<a href="games/{{ $game->id }}/edit" class="btn btn-warning float-right">Edit</a>
+											Round {{ $game->round }} Game</h2>
+										</div>
+										<?php if($game->game_complete == "Y") { ?>
+											<?php if($game->forfeit == "Y") { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->home_team . " loss due to forfeit" : $game->away_team . " loss due to forfeit"; ?></p>
+											<?php } else { ?>
+												<p class="text-center pt-3"><?php echo $game->losing_team_id == $game->home_team_id ? $game->away_team . " with the win over " . $game->home_team . " " . $game->away_team_score . " - " . $game->home_team_score : $game->home_team . " beat " . $game->away_team . " " . $game->home_team_score . " - " . $game->away_team_score; ?></p>
+											<?php } ?>
+										<?php } else { ?>
+											<p class="text-center pt-3">{{ $game->away_team}} vs {{ $game->home_team}}</p>
+										<?php } ?>
+									</div>
+								</div>
+							@endforeach	
+						</div>
+					@endif
+
 					<div class="row playoffBracket">
 						<div class="col">
 							<main id="tournament" class="text-white" style="position:relative">
@@ -468,17 +523,17 @@
 						</div>
 					</div>
 				@endif
-				@if($games->isEmpty())
+				@if($games->count() < 2)
 					<div class="row">
 						<div class="col">
-							<h2 class="text-white m-4">You do not have any games yet. Once you are ready to have a games created, go back to settings and start the tournament</h2>
+							<h2 class="text-white m-4">You do not have enough teams to create a tournament.</h2>
 						</div>
 					</div>
 				@endif
 			@else
 				<div class="row">
 					<div class="col">
-						<p class="text-white">You have not started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</p>
+						<h2 class="text-white">You have not started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</h2>
 					</div>
 				</div>
 			@endif
@@ -486,6 +541,16 @@
 	@endsection
 	
 	@section('footer')
+		<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
+			<p class="">10% of all proceeds will be donated to charity</p>
+			<p class="">Sponcered By: </p>
+			<p class="">Organized By: </p>
+			<div class="">
+				<div class="">
+					<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+				</div>
+			</div>
+		</footer>
 		<script type="text/javascript">
 			$('nav ul li:nth-of-type(3) a').addClass('active');			
 		</script>

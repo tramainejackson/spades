@@ -2,12 +2,16 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
     public function create_tourney_settings()
 	{
+
+		// dd($standings);
+
 		$checkSettings = $this;
 		$totalPlayoffTeams = \App\Team::all();
 		$checkSchedule = \App\Game::all();
@@ -17,33 +21,24 @@ class Setting extends Model
 		$rounds = 1;
 		$homeSeed = 0;
 		$awaySeed = $teams + 1;
-		
-		// dd($checkSchedule);
-		
-		if($checkSchedule->isEmpty()) {
-			if($teams > 0) {
-				// Create playoff settings
-				do {
-					$target = pow($teams, 1/$rounds);
-					// echo "Target = " . $target . "<br/>";
-					
-					if($target <= 2) {
-						if($target != 2) {
-							$target = 0;
-							$remainingTeams = 0;
-							do {
-								$teams--;
-								$remainingTeams++;
-								$target = pow($teams, 1/($rounds-1));
-								// echo "Teams till even = " . $remainingTeams . "<br/>";
-								if($target == 2) {
-									if(fmod($remainingTeams, 2) != 0) {
-										if($remainingTeams == 1) {
-											// echo "There will need to be a play in game<br/>";
-										} else {
-											// $rounds--;
-											// echo "There will need to be a play in game<br/>";
-										}
+
+		if($teams > 3) {
+			// Create playoff settings
+			do {
+				$target = pow($teams, 1/$rounds);
+				
+				if($target <= 2) {
+					if($target != 2) {
+						$target = 0;
+						$remainingTeams = 0;
+						do {
+							$teams--;
+							$remainingTeams++;
+							$target = pow($teams, 1/($rounds-1));
+							if($target == 2) {
+								if(fmod($remainingTeams, 2) != 0) {
+									if($remainingTeams == 1) {
+									} else {
 									}
 								}
 							} while($target != 2);
@@ -67,7 +62,7 @@ class Setting extends Model
 					$this->playin_games = "Y";
 					$this->playin_games_complete = "N";
 				}
-				
+
 				// Create playoff schedule
 				if($this->playin_games == "Y") {
 					$totalByeTeams = $this->teams_with_bye;
@@ -106,7 +101,6 @@ class Setting extends Model
 							// }
 						}
 					}
-					
 				} else {
 					// dd($totalPlayoffTeams);
 					while($totalPlayoffTeams->isNotEmpty()) {
@@ -122,8 +116,6 @@ class Setting extends Model
 						$playoffSchedule->away_team_id = $awayTeam->id;
 						$playoffSchedule->home_seed = $homeSeed;
 						$playoffSchedule->away_seed = $awaySeed;
-						// $playoffSchedule->game_time = "12:00";
-						// $playoffSchedule->game_date = date("Y-m-d");
 						$playoffSchedule->playin_game = "N";
 						$playoffSchedule->round = $round;
 
@@ -152,5 +144,9 @@ class Setting extends Model
 				$this->champion_id = NULL;
 			}
 		}
+	}
+	
+	public function remove_active_games() {
+		DB::table('games')->truncate();
 	}
 }

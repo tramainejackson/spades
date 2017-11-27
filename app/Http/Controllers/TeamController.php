@@ -48,20 +48,31 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {	
-        $team = new Team;
-		$team->team_name = $request->team_name;
-		$team->player_1 = $request->player1;
-		$team->player_2 = $request->player2;
-		$team->email = $request->email;
-		
-		if($request->pif == null) {
-			$team->save();
-			// Mail::to($team->email)->send(new Confirmation($team));
-			return view('payment', compact('team'));
+		$setting = \App\Setting::find(1);
+		$teams = Team::all();
+
+		if($teams->count() < 64) {
+			$team = new Team;
+			$team->team_name = $request->team_name;
+			$team->player_1 = $request->player1;
+			$team->player_2 = $request->player2;
+			$team->email = $request->email;
+			
+			if($request->pif == null) {
+				$team->save();
+				// Mail::to($team->email)->send(new Confirmation($team));
+				return view('payment', compact('team'));
+			} else {
+				$team->pif = $request->pif;
+				$team->save();
+				return redirect()->action('TeamController@index');
+			}
+
+			$setting->remove_active_games();
+			$setting->create_tourney_settings();			
+
 		} else {
-			$team->pif = $request->pif;
-			$team->save();
-			return redirect()->action('TeamController@index');
+			return redirect()->action('TeamController@index')->with('status', 'The max amount of teams (64 teams) has been reached and we are not accepting any more entries');
 		}
     }
 

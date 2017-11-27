@@ -43,16 +43,21 @@
 		@else
 			<div class="row">
 				<div class="col">
-					<h2 class="">No teams have been added yet. Click <a href="{{ route('teams.create') }}" class="">here</a> to add your first team</h2>
+					<h2 class="text-white">No teams have been added yet. Click <a href="{{ route('teams.create') }}" class="">here</a> to add your first team</h2>
 				</div>
 			</div>
 		@endif
 	@endsection
 	
 	@section('footer')
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-		<script type="text/javascript">
-			$('nav ul li:nth-of-type(4) a').addClass('active');
-		</script>
+		<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center{{ $teams->isEmpty() ? ' fixed-bottom' : '' }}">
+			<p class="">10% of all proceeds will be donated to charity</p>
+			<p class="">Sponcered By: </p>
+			<p class="">Organized By: </p>
+			<div class="">
+				<div class="">
+					<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+				</div>
+			</div>
+		</footer>
 	@endsection
