@@ -2,13 +2,13 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
     public function create_tourney_settings()
 	{
-		// $standings = League_Standings::get_league_standings($this->get_league_id());
 		// dd($standings);
 		$checkSettings = $this;
 		$totalPlayoffTeams = \App\Team::all();
@@ -20,11 +20,10 @@ class Setting extends Model
 		$homeSeed = 0;
 		$awaySeed = $teams + 1;
 		
-		if($teams > 0) {
+		if($teams > 3) {
 			// Create playoff settings
 			do {
 				$target = pow($teams, 1/$rounds);
-				// echo "Target = " . $target . "<br/>";
 				
 				if($target <= 2) {
 					if($target != 2) {
@@ -34,14 +33,10 @@ class Setting extends Model
 							$teams--;
 							$remainingTeams++;
 							$target = pow($teams, 1/($rounds-1));
-							// echo "Teams till even = " . $remainingTeams . "<br/>";
 							if($target == 2) {
 								if(fmod($remainingTeams, 2) != 0) {
 									if($remainingTeams == 1) {
-										// echo "There will need to be a play in game<br/>";
 									} else {
-										// $rounds--;
-										// echo "There will need to be a play in game<br/>";
 									}
 								}
 							}
@@ -85,8 +80,6 @@ class Setting extends Model
 					$playoffSchedule->away_team_id = $awayTeam->id;
 					$playoffSchedule->home_seed = $homeSeed;
 					$playoffSchedule->away_seed = $awaySeed;
-					// $playoffSchedule->game_time = "12:00";
-					// $playoffSchedule->game_date = date("Y-m-d");
 					$playoffSchedule->playin_game = "Y";
 
 					if($playoffSchedule->save()) {
@@ -120,8 +113,6 @@ class Setting extends Model
 					$playoffSchedule->away_team_id = $awayTeam->id;
 					$playoffSchedule->home_seed = $homeSeed;
 					$playoffSchedule->away_seed = $awaySeed;
-					// $playoffSchedule->game_time = "12:00";
-					// $playoffSchedule->game_date = date("Y-m-d");
 					$playoffSchedule->playin_game = "N";
 					$playoffSchedule->round = $round;
 
@@ -149,5 +140,9 @@ class Setting extends Model
 			$this->champion = NULL;
 			$this->champion_id = NULL;
 		}
+	}
+	
+	public function remove_active_games() {
+		DB::table('games')->truncate();
 	}
 }

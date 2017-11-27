@@ -114,23 +114,13 @@
     </div>
 	
 	<!-- Footer -->
-	<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center">
-		<p class="">10% of all proceeds will be donated to charity</p>
-		<p class="">Sponcered By: </p>
-		<p class="">Organized By: </p>
-		<div class="">
-			<div class="">
-				<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
-			</div>
-		</div>
-	</footer>
+	@yield('footer')
 	<div class="" style=""></div>
 	<script src="/js/app.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="/js/myjs.js"></script>
 	
-	@yield('footer')
 
 </body>
 </html>
