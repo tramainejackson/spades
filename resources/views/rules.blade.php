@@ -13,13 +13,35 @@
 					<h3 class="pb-3">The following rules will apply to every game:</h3>
 					<ul class="" style="font-size:125%;">
 						<li class="">All games go to 350 points</li>
-						<li class="">No passing of spades (if you have 0 spades start praying)</li>
+						<li class="">No passing of cards (if you have 0 spades start praying)</li>
 						<li class="">Minimum bid is 4 books</li>
-						<li class="">Blinds bids start at a bid 6 books</li>
 						<li class="">10 made books will result in 200 points</li>
+						<li class="">Blinds bids start at a bid 6 books</li>
+						<li class="">10 made books on the first hand will not end the game</li>
 						<li class="">Renege will cost your team 3 books</li>
 						<li class="">Failure to bring your teams bid (set) twice in one game will result in the end of game.</li>
 						<li class="">5 over books throught the entirity of the game will result in your team losing 50 points (does not count as a set)</li>
+						<li class="">There will be a list of rules at every table</li>
+						<li class="">Spades Order (From Top - Bottom)
+							<ul class="">
+								<li class="">Big Joker</li>
+								<li class="">Little Joker</li>
+								<li class="">Duece Diamonds</li>
+								<li class="">Duece Spades</li>
+								<li class="">Ace</li>
+								<li class="">King</li>
+								<li class="">Queen</li>
+								<li class="">Jack</li>
+								<li class="">10</li>
+								<li class="">9</li>
+								<li class="">8</li>
+								<li class="">7</li>
+								<li class="">6</li>
+								<li class="">5</li>
+								<li class="">4</li>
+								<li class="">3</li>
+							</ul>
+						</li>
 					</ul>
 					<h5 class="p-3 text-center">Click <a href="#" class="">here</a> to download a printable version of the rule</h5>
 				</div>
@@ -28,6 +50,28 @@
 	@endsection
 	
 	@section('footer')
+		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
+			<div class="d-flex flex-column mx-auto">
+				<h2 class="">Contact Us</h2>
+				<div class="">
+					<span class="font-weight-bold pr-2">Email:</span>
+					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
+				</div>
+				<div class="">
+					<span class="font-weight-bold pr-2">Phone:</span>
+					<span>215.999.9999</span>
+				</div>
+			</div>
+			<div class="d-flex flex-column mx-auto">
+				<p class="">10% of all proceeds will be donated to charity</p>
+				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
+				<div class="">
+					<div class="">
+						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+					</div>
+				</div>
+			</div>
+		</footer>
 		<script type="text/javascript">
 			$('nav ul li:nth-of-type(4) a').addClass('active');			
 		</script>

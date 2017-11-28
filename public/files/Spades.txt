@@ -2,14 +2,19 @@
 		Spades Tournament
 ------------------------------------
 
-Add contact page
-Style the edit game page
-Associate spades2spades email
-Add a question form to the footer
-Make https
-If team is removed, redo tournament?
-Correct email issue
-Add redirect confirmations(success or error)
+Get picture of each card and add to rules page
 Style a little better and update mobile style
+Associate spades2spades email
+Correct email issue
+Make https
+Get more content for the home page as well
+Add redirect confirmations(success or error)
+Add a question form to the footer
+Done: Style the edit game page
+Done: Style the home page
+Done: Add a counter on the register and tournament page with current amount of teams
+Done: If team is removed, redo tournament?
+Done: Make nav sticky when scrolled the height of the nav
+Done: Add contact page (added to footer)
 Done: Stop registration at a certain number?
 Done: Make footer stick to bottom when no information on page

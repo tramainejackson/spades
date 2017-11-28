@@ -7,10 +7,65 @@ html, body {
 	margin: 0;
 }
 
-.container {
+.container {}
+
+.stickyBgrd {
+	background: rgba(0, 0, 0, 0.95);
+}
+
+.stickyBgrd a {
+    font-size: 150%;
+}
+
+.navPlaceHolder {
+	visibility: hidden;
+	display: none;
+}
+
+.teamCount {
+    background: rgba(143, 188, 143, 0.95);
+    padding: 2%;
+    margin: 2% 0%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #6b6b6b;
+}
+
+.welcomeHeader h1 {
+    position: absolute;
+	left: 0;
+	width: 100%;
+	font-size: 600%;
+}
+
+.welcomeHeader h1:first-of-type {
+    top: -10%;
+}
+
+.welcomeHeader h1:nth-of-type(2) {
+    top: -15%;
+}
+
+.welcomeHeader h1:nth-of-type(3) {
+    top: -20%;
+}
+
+.welcomeHeader h1:last-of-type {
+    top: -30%;
+}
+
+.sm-divider {
+	border: solid 0.5px #d8d8d8;
+    margin: 0px -35px;
+}
+
+.lg-divider {
 	
 }
 
+.card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
 footer {
 	position: relative;
 }
@@ -187,7 +242,7 @@ html, body {
 }
 
 .nav-link {
-	font-size: 115%;
+	font-size: 225%;
 }
 
 .oi {

@@ -24,7 +24,8 @@ Route::get('/rules', function () {
 })->name('rules');
 
 Route::get('/tournament', function () {
-    return view('tournament');
+	$teamCount = \App\Team::all();
+    return view('tournament', compact('teamCount'));
 })->name('tournament');
 
 Route::resource('games', 'GameController');

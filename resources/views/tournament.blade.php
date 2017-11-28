@@ -495,6 +495,44 @@
 						<h3 class="text-white">The tournament schedule will be posted on (Add Date) once registration has closed and bracket has been completed. If there is an odd number of teams, there will be playin games for the teams who register last.</h3>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col">
+						<div class="teamCount container-fluid">
+							<div class="row">
+								<div class="col">
+									<h2 class="text-light">Registered Teams Count <span class="badge badge-primary">{{ $teamCount->count() }}</span></h2>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col">
+									@if($teamCount->count() < 64)
+										<h2 class="text-light">Remaining Open Slots 
+											<span class="@if($teamCount->count() > 20) badge badge-danger
+												@elseif($teamCount->count() > 40) badge badge-warning
+												@else badge badge-success
+												@endif">
+												{{ 64 - $teamCount->count() }}
+											</span>
+										</h2>
+									@endif
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-12">
+									<h2 class="text-light text-center">Currently Registered Teams</h2>
+								</div>
+								
+								@foreach($teamCount as $team)
+									<div class="col-3 my-1 text-center">
+										<button class="btn btn-light w-75" type="button">{{ $team->team_name }}</button>
+									</div>
+								@endforeach
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row playoffBracket">
 					<div class="col">
 						<main id="tournament" class="text-white" style="position:relative">

@@ -14,4 +14,12 @@ class Team extends Model
     protected $fillable = [
         'player_1', 'player_2', 'email', 'team_name',
     ];
+	
+	/**
+     * Get the games for the team.
+     */
+    public function games()
+    {
+        return $this->hasMany('App\Game');
+    }
 }

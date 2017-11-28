@@ -9,7 +9,7 @@
 				<div class="text-white px-3">
 					<p class="px-sm-5" style="font-size:125%;">The entry fee for every team will be $50. It is first come first serve and registration will close once we have reached 64 teams. The tournament is single elimination</p>
 				</div>
-				<div class="fullHeight d-flex flex-column align-items-center justify-content-center m-3 px-3 regForm">
+				<div class="d-flex flex-column align-items-center justify-content-center m-3 px-3 pt-4 regForm">
 					<div class="">
 						<h2 class="text-white">Registration Form</h2>
 						{!! Form::open(['action' => 'TeamController@store']) !!}
@@ -22,11 +22,11 @@
 								{{ Form::text('team_name', '', ['class' => 'form-control', 'required']) }}
 							</div>
 							<div class="form-group">
-								{{ Form::label('player1', 'Player 1 Name', ['class' => 'form-control-label text-white']) }}
+								{{ Form::label('player1', 'Player Name #1', ['class' => 'form-control-label text-white']) }}
 								{{ Form::text('player1', '', ['class' => 'form-control', 'required']) }}
 							</div>
 							<div class="form-group">
-								{{ Form::label('player2', 'Player 2 Name', ['class' => 'form-control-label text-white']) }}
+								{{ Form::label('player2', 'Player Name #2', ['class' => 'form-control-label text-white']) }}
 								{{ Form::text('player2', '', ['class' => 'form-control', 'required']) }}
 							</div>
 							<div class="form-group">
@@ -45,7 +45,7 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
+		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3{{ $settings->start_tourny == 'Y' ? ' fixed-bottom' : '' }}">
 			<div class="d-flex flex-column mx-auto">
 				<h2 class="">Contact Us</h2>
 				<div class="">

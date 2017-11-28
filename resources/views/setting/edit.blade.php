@@ -49,4 +49,17 @@
 	@endsection
 	
 	@section('footer')
+		<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center{{ $teams->isEmpty() ? ' fixed-bottom' : '' }}">
+			<p class="">10% of all proceeds will be donated to charity</p>
+			<p class="">Sponcered By: </p>
+			<p class="">Organized By: </p>
+			<div class="">
+				<div class="">
+					<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript">
+			$('nav ul li:nth-of-type(3) a').addClass('active');			
+		</script>
 	@endsection

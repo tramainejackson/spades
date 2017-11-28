@@ -57,7 +57,7 @@ class TeamController extends Controller
 			$team->player_1 = $request->player1;
 			$team->player_2 = $request->player2;
 			$team->email = $request->email;
-			$team->pif = $request->pif;
+			$team->pif = $request->pif == '' ? 'N' : $request->pif;
 			$team->save();
 
 			$setting->remove_active_games();
@@ -127,7 +127,14 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        $team->delete();
+		$setting = \App\Setting::find(1);
+		
+        if($team->delete()) {
+			// Remove all tourney games and recreate tourney once delete is complete
+			$setting->remove_active_games();
+			$setting->create_tourney_settings();			
+		}
+
 		return redirect()->action('TeamController@index');
     }
 }

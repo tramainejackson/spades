@@ -25,6 +25,7 @@
 		<div class="overlayBgrd"></div>
 		<div class="row">
 			<div class="col">
+				<div class="navPlaceHolder"></div>
 				<nav class="navbar navbar-default navbar-static-top">
 					<div class="navbar-header">
 
@@ -93,12 +94,12 @@
 							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('tournament') }}">Tournament</a></li>
 							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('rules') }}">Rules</a></li>
 						@else
-							<li class="text-center nav-item"><a class="navLink text-white" href="/teams">Teams</a></li>
-							<li class="text-center nav-item"><a class="navLink text-white" href="/games">Games</a></li>
-							<li class="text-center nav-item"><a class="navLink text-white" href="/setting">Settings</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="/teams">Teams</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="/games">Games</a></li>
+							<li class="text-center nav-item"><a class="nav-link text-white" href="/setting">Settings</a></li>
 							<li class="text-center nav-item">
 								<div class="">
-									<a class="navLink text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+									<a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 									
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 										{{ csrf_field() }}

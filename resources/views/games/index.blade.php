@@ -418,100 +418,100 @@
 								<ul class="round round-1">
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top ">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom winner">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 								</ul>
 								<ul class="round round-2">
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top ">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom winner">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
 									<li class="game game-top ">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom winner">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
+
+									<li class="spacer">&nbsp;</li>
+									
+									<li class="game game-top">TBD <span>0</span></li>
+									<li class="game game-spacer">&nbsp;</li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 								</ul>
 								<ul class="round round-3">
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top ">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom winner">TBD <span>0</span></li>
+									<li class="game game-bottom">TBD <span>0</span></li>
 
 									<li class="spacer">&nbsp;</li>
 								</ul>
 								<ul class="round round-4">
 									<li class="spacer">&nbsp;</li>
 									
-									<li class="game game-top winner">TBD <span>0</span></li>
+									<li class="game game-top">TBD <span>0</span></li>
 									<li class="game game-spacer">&nbsp;</li>
 									<li class="game game-bottom ">TBD <span>0</span></li>
 									
@@ -550,6 +550,6 @@
 			</div>
 		</footer>
 		<script type="text/javascript">
-			$('nav ul li:nth-of-type(3) a').addClass('active');			
+			$('nav ul li:nth-of-type(2) a').addClass('active');			
 		</script>
 	@endsection

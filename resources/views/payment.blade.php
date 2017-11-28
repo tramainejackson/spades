@@ -1,7 +1,7 @@
 @extends('layouts.app')
 	@section('content')
 		<div class="row">
-			<div class="col p-2 rounded teamRegPayment">
+			<div class="col p-2 mt-4 rounded teamRegPayment">
 				<h2 class="text-center p-2 rounded-top">Registration Almost Complete</h2>
 				<h3 class="text-justify p-3">Thanks for registering for the 2018 spades tournament. To ensure that your team has a spot in the tournament, select one of the options for payment below to complete the registration. This will ensure that your teams spot is reserved.</h3>
 			</div>
@@ -31,4 +31,32 @@
 				</a>
 			</div>
 		</div>
+	@endsection
+	
+	@section('footer')
+		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
+			<div class="d-flex flex-column mx-auto">
+				<h2 class="">Contact Us</h2>
+				<div class="">
+					<span class="font-weight-bold pr-2">Email:</span>
+					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
+				</div>
+				<div class="">
+					<span class="font-weight-bold pr-2">Phone:</span>
+					<span>215.999.9999</span>
+				</div>
+			</div>
+			<div class="d-flex flex-column mx-auto">
+				<p class="">10% of all proceeds will be donated to charity</p>
+				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
+				<div class="">
+					<div class="">
+						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript">
+			$('nav ul li:nth-of-type(2) a').addClass('active');			
+		</script>
 	@endsection

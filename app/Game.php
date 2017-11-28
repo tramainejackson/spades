@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+	/**
+     * Get the teams for the game.
+     */
+    public function home_team()
+    {
+        return $this->hasOne('App\Team', 'id', 'home_team_id');
+    }
+	
+	public function away_team()
+    {
+        return $this->hasOne('App\Team', 'id', 'away_team_id');
+    }
+	
 	public function complete_round($round=0) {
 		$games = \App\Game::where('round', $round)->get();
 		$completeGames = 0;
