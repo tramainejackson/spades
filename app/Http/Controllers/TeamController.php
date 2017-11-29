@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Team;
 use App\Mail\Confirmation;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -60,6 +61,8 @@ class TeamController extends Controller
 			$team->pif = $request->pif == '' ? 'N' : $request->pif;
 			$team->save();
 
+			Log::info('Add Team ID('.$team->id.'): Team Name: '.$team->team_name.' | Player #1: '.$team->player_1.', Player #2: '.$team->player_2);
+			
 			$setting->remove_active_games();
 			$setting->create_tourney_settings();			
 

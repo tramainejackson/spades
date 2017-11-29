@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	// Animate home page header
-	$('.welcomeHeader h1:first-of-type').animate({top:'3%'}, 2000);
-	$('.welcomeHeader h1:nth-of-type(2)').animate({top:'8%'}, 2000);
-	$('.welcomeHeader h1:nth-of-type(3)').animate({top:'13%'}, 2000);
-	$('.welcomeHeader h1:last-of-type').animate({top:'18%'}, 2000);
+	$('.welcomeHeader h1:first-of-type').animate({top:'0%'}, 2000);
+	$('.welcomeHeader h1:nth-of-type(2)').animate({top:'5%'}, 2000);
+	$('.welcomeHeader h1:nth-of-type(3)').animate({top:'10%'}, 2000);
+	$('.welcomeHeader h1:last-of-type').animate({top:'15%'}, 2000);
 	
 	// Make the nav placeholder the same size as the nav for 
 	// fixed nav animation

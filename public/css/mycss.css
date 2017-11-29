@@ -38,7 +38,7 @@ html, body {
 }
 
 .welcomeHeader h1:first-of-type {
-    top: -10%;
+    top: -15%;
 }
 
 .welcomeHeader h1:nth-of-type(2) {
@@ -154,100 +154,97 @@ border-top:1px solid #aaa;
 }
 
 @media (max-width: 576px) {
-/* Adding a fixed background to a mobile site*/
-body:before {
-	content: "";
-	display: block;
-	position: fixed; 
-	left: 0; 
-	top: 0;
-	bottom: 0;
-	width: 100%; 
-	height: 100%; 
-	z-index: -10; 
-	background: url(/images/spades-table.jpg) no-repeat center center; 
-	-webkit-background-size: cover; 
-	-moz-background-size: cover; 
-	-o-background-size: cover; 
-	background-size: cover; 
-}
+	/* Adding a fixed background to a mobile site*/
+	body:before {
+		content: "";
+		display: block;
+		position: fixed; 
+		left: 0; 
+		top: 0;
+		bottom: 0;
+		width: 100%; 
+		height: 100%; 
+		z-index: -10; 
+		background: url(/images/spades-table.jpg) no-repeat center center; 
+		-webkit-background-size: cover; 
+		-moz-background-size: cover; 
+		-o-background-size: cover; 
+		background-size: cover; 
+	}
 
-.container .overlayBgrd {
-	background: rgba(0, 0, 0, 0.3);
-	position: fixed; 
-	left: 0; 
-	top: 0;
-	bottom: 0;
-	width: 100%; 
-	height: 100%;
-	-webkit-background-size: cover; 
-	-moz-background-size: cover; 
-	-o-background-size: cover; 
-	background-size: cover; 
-}
+	.container .overlayBgrd {
+		background: rgba(0, 0, 0, 0.3);
+		position: fixed; 
+		left: 0; 
+		top: 0;
+		bottom: 0;
+		width: 100%; 
+		height: 100%;
+		-webkit-background-size: cover; 
+		-moz-background-size: cover; 
+		-o-background-size: cover; 
+		background-size: cover; 
+	}
 
-.menuMobile {
-	background: url("/images/spadeNav.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center center;
-	height: 50px;
-	width: 50px;
-}
+	.menuMobile {
+		background: url("/images/spadeNav.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		height: 50px;
+		width: 50px;
+	}
 
-#app-navbar-collapse {
-    background: linear-gradient(rgba(47, 79, 79, 0.2), rgba(47, 79, 79, 0.85), darkslategrey);
-    margin: 0% 12%;
-}
+	#app-navbar-collapse {
+		background: linear-gradient(rgba(47, 79, 79, 0.2), rgba(47, 79, 79, 0.85), darkslategrey);
+		margin: 0% 12%;
+	}
 
-a.navLink {
-    color: whitesmoke;
-    font-size: x-large;
-}
+	a.navLink {
+		color: whitesmoke;
+		font-size: x-large;
+	}
 
-.welcomeHeader h1 {
-    margin-top: -50%;
-}
+	.welcomeHeader h1 {
+		margin-top: -50%;
+	}
 
-.playoffBracket {
-	position: relative;
-    color: white;
-    overflow-x: scroll;
-}
+	.playoffBracket {
+		position: relative;
+		color: white;
+		overflow-x: scroll;
+	}
 
-.round {
-	width: -webkit-fill-available;
-}}
+	.round {
+		width: -webkit-fill-available;
+	}
+}
 
 @media (min-width: 992px) {
-html, body {
-	background: url(/images/spades-table.jpg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-}
+	html, body {
+		background: url(/images/spades-table.jpg) no-repeat center center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-attachment: fixed;
+	}
 
-#app {
-	margin-bottom: 200px;
-}
+	#app {
+		margin-bottom: 200px;
+	}
 
-.welcomeHeader h2 {
-    font-size: 425%;
-}
+	.welcomeHeader h2 {
+		font-size: 425%;
+	}
 
-.welcomeHeader p {
-    font-size: 150%;
-}
+	.welcomeHeader p {
+		font-size: 150%;
+	}
 
-.nav-link {
-	font-size: 225%;
-}
-
-.oi {
-    top: 0px;
-}
+	.oi {
+		top: 0px;
+	}
 }
 
 @media (min-width: 1200px) {
@@ -261,5 +258,15 @@ html, body {
 	
 	form input[type="submit"] {
 		color: white !important;
+	}
+	
+	.nav-link {
+		font-size: 175%;
+	}
+}
+
+@media (min-width: 1400px) {
+	.nav-link {
+		font-size: 225%;
 	}
 }

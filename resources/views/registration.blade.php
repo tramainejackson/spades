@@ -33,7 +33,7 @@
 								{{ Form::submit('Next', ['class' => 'form-control btn btn-primary']) }}
 							</div>
 						{!! Form::close() !!}
-						<p class="finePrint text-white mt-4">We will be accepting payments via Visa, Paypal, Cash App. Once the registration form is completed, you will be redirected to choose your choice of payment.</p>
+						<p class="finePrint text-white mt-4">We will be accepting payments via Paypal or Cash App. Once the registration form is completed, you will be redirected to choose your choice of payment.</p>
 					</div>
 				</div>
 			@else

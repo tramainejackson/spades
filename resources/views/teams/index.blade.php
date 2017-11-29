@@ -2,10 +2,9 @@
 	@section('content')
 		<div class="row mt-3">
 			<div class="col text-white">
-				<div class="" style="">
-					<h1 class="display-4 my-4 text-center">
-						<a href="{{ route('teams.create') }}" class="btn btn-success float-right">Add Team</a>
-					View Teams</h1>
+				<div class="d-flex justify-content-center align-items-center">
+					<h1 class="display-4 my-4 align-self-center">View Teams</h1>
+					<a href="{{ route('teams.create') }}" class="btn btn-success position-absolute" style="right:25%;">Add Team</a>
 				</div>
 			</div>
 		</div>
@@ -43,14 +42,14 @@
 		@else
 			<div class="row">
 				<div class="col">
-					<h2 class="text-white">No teams have been added yet. Click <a href="{{ route('teams.create') }}" class="">here</a> to add your first team</h2>
+					<h2 class="text-white text-center">No teams have been added yet. Click <a href="{{ route('teams.create') }}" class="">here</a> to add your first team</h2>
 				</div>
 			</div>
 		@endif
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
+		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3{{ $teams->isEmpty() ? ' fixed-bottom' : '' }}">
 			<div class="d-flex flex-column mx-auto">
 				<h2 class="">Contact Us</h2>
 				<div class="">

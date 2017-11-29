@@ -22,6 +22,7 @@
 						</div>
 					</div>
 				@endif
+				
 				@if($settings->playin_games_complete == 'Y' && $settings->playin_games == 'N')
 					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $x = 1; @endphp
@@ -521,17 +522,18 @@
 						</div>
 					</div>
 				@endif
-				@if($games->count() < 2)
+
+				@if($teamsCount < 4)
 					<div class="row">
 						<div class="col">
-							<h2 class="text-white m-4">You do not have enough teams to create a tournament.</h2>
+							<h2 class="text-white text-center m-4">You do not have enough teams to create a tournament. Click <a class="navLink" href="/teams/create">here</a> to go to add more teams to start the tournament</h2>
 						</div>
 					</div>
 				@endif
 			@else
 				<div class="row">
 					<div class="col">
-						<h2 class="text-white">You have not started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</h2>
+						<h2 class="text-white text-center">You have not started your tournament yet. Click <a class="navLink" href="/setting">here</a> to go to settings to start the tournament</h2>
 					</div>
 				</div>
 			@endif
@@ -539,13 +541,25 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex flex-column justify-content-center bg-dark text-white text-center{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
-			<p class="">10% of all proceeds will be donated to charity</p>
-			<p class="">Sponcered By: </p>
-			<p class="">Organized By: Montrell Duckett and Tramaine Jackson</p>
-			<div class="">
+		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
+			<div class="d-flex flex-column mx-auto">
+				<h2 class="">Contact Us</h2>
 				<div class="">
-					<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+					<span class="font-weight-bold pr-2">Email:</span>
+					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
+				</div>
+				<div class="">
+					<span class="font-weight-bold pr-2">Phone:</span>
+					<span>215.999.9999</span>
+				</div>
+			</div>
+			<div class="d-flex flex-column mx-auto">
+				<p class="">10% of all proceeds will be donated to charity</p>
+				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
+				<div class="">
+					<div class="">
+						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
+					</div>
 				</div>
 			</div>
 		</footer>

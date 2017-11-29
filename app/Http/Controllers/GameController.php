@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class GameController extends Controller
 {
@@ -27,8 +28,9 @@ class GameController extends Controller
 		$settings = \App\Setting::where('id', 1)->first();
 		$games = \App\Game::all();
 		$teams = \App\Team::all();
+		$teamsCount = \App\Team::all()->count();
 		
-		return view('games.index', compact('settings', 'games', 'teams'));
+		return view('games.index', compact('settings', 'games', 'teams', 'teamsCount'));
     }
 
     /**
@@ -84,13 +86,9 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
 		if(isset($request->round_id)) {
-			// $playoffSetting = League_Settings::get_league_settings($league->get_league_id());
-			// $game = Playoff_Schedule::get_game_by_id($_POST['game_id'], $league->get_league_id());
 			$homeTeam = $request->home_team;
 			$awayTeam = $request->away_team;
 			$playoffRound = $request->round_id;
-			// $game->game_date = $_POST['game_date'];
-			// $game->game_time = $_POST['game_time'];
 			$game->home_team_score = $request->home_team_score;
 			$game->away_team_score = $request->away_team_score;
 			$homeForfeit = isset($request->home_forfeit) ? $request->home_forfeit : "";
@@ -121,10 +119,8 @@ class GameController extends Controller
 			}
 
 			if($game->save()) {
-				// $message->success("<li>Game results have been updated</li>");
 				$game->complete_round($playoffRound);
 			} else {
-				// $message->error("<li>Game results did not update</li>");
 			}
 		} else {
 			$homeTeam = $request->home_team;
@@ -161,24 +157,12 @@ class GameController extends Controller
 			
 			if($game->save()) {
 				$game->complete_playins();
-				// $message->success("<li>Game results have been updated</li>");
-				
-				// if($playoffCheck->is_playoffs()) {
-					// $playoffRound == "" || $playoffRound < 1 ? $game->complete_playins() : $game->complete_round($playoffRound);
-				// } else {
-					// // Update standings
-					// if($updateStandings = League_Standings::update_standings()) {
-						// $message->success("<li>Standings have been updated</li>");
-					// } else {
-						// $message->error("<li>Standings did not update</li>");
-					// }
-				// }
 			} else {
-				// $message->error("<li>Game results did not update</li>");
 			}
 		}
 		
-		// dd($request->all());
+		Log::info('Game Result: Team ID('.$game->home_team_id.') - '.$game->home_team_score.' vs Team ID('.$game->away_team_id.') - '.$game->away_team_score);
+		
 		return redirect()->action('GameController@index');
     }
 

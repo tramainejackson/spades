@@ -8,7 +8,7 @@
 		<div class="view_schedule">
 			<div class="row">
 				<div class="col text-white">
-					<h1 class="display-4 my-4 text-center">Tourney Schedule</h1>
+					<h1 class="display-4 my-4 text-center">Tourney Bracketology</h1>
 				</div>
 			</div>
 			@if($settings->start_tourny == "Y")
@@ -27,63 +27,76 @@
 						</div>
 					</div>
 				@endif
-				@if(($settings->playin_games_complete == 'Y' || $settings->playin_games_complete == 'N') && $settings->playin_games == 'N')
+				
+				@if($settings->playin_games == 'N')
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
 					@php $teams = $teams->count() - $settings->teams_with_bye; @endphp
-					<div class="row mt-5 mb-3">
-						<div class="col">
-							<h2 class="text-white text-center display-4">Bracketology</h2>
-						</div>
-					</div>
-					<div class="row playoffBracket text-white">
-						<div class="col">
-							<main id="tournament">
-								@while($rounds > 0)
-									@php $totalGames = ($teams/2); @endphp
-									<ul class="round round-{{ $x }}">
-										<!--- Get games that are for round x from database --->
-										@php $playoffSchedule = \App\Game::where('round', $x)->get(); @endphp
-										@if($playoffSchedule->isNotEmpty())
-											@while($playoffSchedule->isNotEmpty())
-												@php $roundGames = $playoffSchedule->count(); @endphp
-												@if($roundGames == ($teams/2))
-													<?php if($roundGames == 1) { ?>
-														<?php $playoffs = $playoffSchedule->shift(); ?>
 
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
-													<?php } else { ?>
-														<?php $playoffs = $playoffSchedule->shift(); ?>
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
-													<?php } ?>
-												@elseif(fmod(count($playoffSchedule),2) == 0)
-													<?php $findGameIndex = (count($playoffSchedule) / 2); ?>
-													
-													<?php if($findGameIndex == 1) { ?>
-														<?php $playoffs = $playoffSchedule->splice($findGameIndex,1)->first(); ?>
-														<?php $playoffs2 = $playoffSchedule->splice(($findGameIndex-1),1)->first(); ?>
+					@if($rounds > 0)
+						<div class="row playoffBracket text-white">
+							<div class="col">
+								<main id="tournament">
+									@while($rounds > 0)
+										@php $totalGames = ($teams/2); @endphp
+										<ul class="round round-{{ $x }}">
+											<!--- Get games that are for round x from database --->
+											@php $playoffSchedule = \App\Game::where('round', $x)->get(); @endphp
+											@if($playoffSchedule->isNotEmpty())
+												@while($playoffSchedule->isNotEmpty())
+													@php $roundGames = $playoffSchedule->count(); @endphp
+													@if($roundGames == ($teams/2))
+														<?php if($roundGames == 1) { ?>
+															<?php $playoffs = $playoffSchedule->shift(); ?>
 
-														<?php if($x > 1) { ?>
 															<li class="spacer">&nbsp;</li>
 															
-															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
+															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
 															<li class="game game-spacer">&nbsp;</li>
-															<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-															
-															<li class="spacer">&nbsp;</li>
-															
-															<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
-															<li class="game game-spacer">&nbsp;</li>
-															<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->home_seed . ") " . $playoffs2->home_team; ?> <span><?php echo $playoffs2->home_team_score; ?></span></li>
+															<li class="game game-bottom{{ $playoffs->winning_team_id == $playoffs->away_team_id ? ' winner' : '' }}">{{ $playoffs->away_seed . ") " . $playoffs->away_team }} <span>{{ $playoffs->away_team_score }}</span></li>
 														<?php } else { ?>
+															<?php $playoffs = $playoffSchedule->shift(); ?>
+															<li class="spacer">&nbsp;</li>
+															
+															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
+															<li class="game game-spacer">&nbsp;</li>
+															<li class="game game-bottom{{ $playoffs->winning_team_id == $playoffs->away_team_id ? ' winner' : '' }}">{{ $playoffs->away_seed . ") " . $playoffs->away_team }} <span>{{ $playoffs->away_team_score }}</span></li>
+														<?php } ?>
+													@elseif(fmod(count($playoffSchedule),2) == 0)
+														<?php $findGameIndex = (count($playoffSchedule) / 2); ?>
+														
+														<?php if($findGameIndex == 1) { ?>
+															<?php $playoffs = $playoffSchedule->splice($findGameIndex,1)->first(); ?>
+															<?php $playoffs2 = $playoffSchedule->splice(($findGameIndex-1),1)->first(); ?>
+
+															<?php if($x > 1) { ?>
+																<li class="spacer">&nbsp;</li>											
+																<li class="game game-top{{ $playoffs->winning_team_id == $playoffs->away_team_id ? ' winner' : '' }}">{{ $playoffs->away_seed . ") " . $playoffs->away_team }} <span>{{ $playoffs->away_team_score }}</span></li>
+																<li class="game game-spacer">&nbsp;</li>
+														<li class="game game-bottom{{ $playoffs->winning_team_id == $playoffs->home_team_id ? ' winner' : '' }}">{{ $playoffs->home_seed . ") " . $playoffs->home_team }} <span>{{ $playoffs->home_team_score }}</span></li>
+																
+																<li class="spacer">&nbsp;</li>
+																
+																<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
+																<li class="game game-spacer">&nbsp;</li>
+																<li class="game game-bottom{{ $playoffs2->winning_team_id == $playoffs2->home_team_id ? ' winner' : '' }}">{{ $playoffs2->home_seed . ") " . $playoffs2->home_team }} <span>{{ $playoffs2->home_team_score }}</span></li>
+															<?php } else { ?>
+																<li class="spacer">&nbsp;</li>
+																
+																<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
+																<li class="game game-spacer">&nbsp;</li>
+																<li class="game game-bottom{{ $playoffs->winning_team_id == $playoffs->away_team_id ? ' winner' : '' }}">{{ $playoffs->away_seed . ") " . $playoffs->away_team }} <span>{{ $playoffs->away_team_score }}</span></li>
+																
+																<li class="spacer">&nbsp;</li>
+																
+																<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->home_seed . ") " . $playoffs2->home_team; ?> <span><?php echo $playoffs2->home_team_score; ?></span></li>
+																<li class="game game-spacer">&nbsp;</li>
+																<li class="game game-bottom{{ $playoffs2->winning_team_id == $playoffs2->away_team_id ? ' winner' : '' }}">{{ $playoffs2->away_seed . ") " . $playoffs2->away_team }} <span>{{ $playoffs2->away_team_score }}</span></li>
+															<?php } ?>
+														<?php } else { ?>
+															<?php $playoffs = $playoffSchedule->splice($findGameIndex,1)->first(); ?>
+															<?php $playoffs2 = $playoffSchedule->splice(($findGameIndex-1),1)->first(); ?>
+
 															<li class="spacer">&nbsp;</li>
 															
 															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
@@ -94,61 +107,58 @@
 															
 															<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->home_seed . ") " . $playoffs2->home_team; ?> <span><?php echo $playoffs2->home_team_score; ?></span></li>
 															<li class="game game-spacer">&nbsp;</li>
-															<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->way_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
+															<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
 														<?php } ?>
-													<?php } else { ?>
-														<?php $playoffs = $playoffSchedule->splice($findGameIndex,1)->first(); ?>
-														<?php $playoffs2 = $playoffSchedule->splice(($findGameIndex-1),1)->first(); ?>
-
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
-														
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->home_seed . ") " . $playoffs2->home_team; ?> <span><?php echo $playoffs2->home_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
-													<?php } ?>
-												@else
-													<?php $playoffs = $playoffSchedule->pop(); ?>
-												
-													<?php if($x > 1) { ?>
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-													<?php } else { ?>
-														<li class="spacer">&nbsp;</li>
-														
-														<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
-														<li class="game game-spacer">&nbsp;</li>
-														<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
-													<?php } ?>
-												@endif
-											@endwhile
-										@else
-											@for($i=0; $i < $totalGames; $i++)
-												<li class="spacer">&nbsp;</li>
-												
-												<li class="game game-top">TBD<span></span></li>
-												<li class="game game-spacer">&nbsp;</li>
-												<li class="game game-bottom ">TBD<span></span></li>
-											@endfor
-										@endif
-										<li class="spacer">&nbsp;</li>
-									</ul>
-									
-									@php $teams = ($teams/2); @endphp
-									@php $rounds--; @endphp
-									@php $x++; @endphp
-								@endwhile
-							</main>
+													@else
+														<?php $playoffs = $playoffSchedule->pop(); ?>
+													
+														<?php if($x > 1) { ?>
+															<li class="spacer">&nbsp;</li>
+															
+															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
+															<li class="game game-spacer">&nbsp;</li>
+															<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
+														<?php } else { ?>
+															<li class="spacer">&nbsp;</li>
+															
+															<li class="game game-top <?php echo $playoffs->winning_team_id == $playoffs->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs->home_seed . ") " . $playoffs->home_team; ?> <span><?php echo $playoffs->home_team_score; ?></span></li>
+															<li class="game game-spacer">&nbsp;</li>
+															<li class="game game-bottom <?php echo $playoffs->winning_team_id == $playoffs->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs->away_seed . ") " . $playoffs->away_team; ?> <span><?php echo $playoffs->away_team_score; ?></span></li>
+														<?php } ?>
+													@endif
+												@endwhile
+											@else
+												@for($i=0; $i < $totalGames; $i++)
+													<li class="spacer">&nbsp;</li>
+													
+													<li class="game game-top">TBD<span></span></li>
+													<li class="game game-spacer">&nbsp;</li>
+													<li class="game game-bottom">TBD<span></span></li>
+												@endfor
+											@endif
+											<li class="spacer">&nbsp;</li>
+										</ul>
+										
+										@php $teams = ($teams/2); @endphp
+										@php $rounds--; @endphp
+										@php $x++; @endphp
+									@endwhile
+								</main>
+							</div>
 						</div>
-					</div>
+					@else
+						<div class="row">
+							<div class="col">
+								<h3 class="text-center text-light">The tournament has not be generated yet</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								@include('bracketology')
+							</div>
+						</div>
+					@endif
+					
 				@elseif($settings->playin_games_complete == 'Y' && $settings->playin_games == 'Y')
 					@php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); @endphp
 					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
@@ -227,11 +237,7 @@
 							@endforeach	
 						</div>
 					@endif
-					<div class="row mt-5 mb-3">
-						<div class="col">
-							<h2 class="text-white text-center display-4">Bracketology</h2>
-						</div>
-					</div>
+
 					<div class="row playoffBracket text-white">
 						<div class="col">
 							<main id="tournament">
@@ -345,7 +351,7 @@
 							</main>
 						</div>
 					</div>
-				@else
+				@elseif($settings->playin_games_complete == 'N' && $settings->playin_games == 'Y')
 					@php $getPlayInGames = \App\Game::where('playin_game', 'Y')->get(); @endphp
 					@if($getPlayInGames->isNotEmpty())
 						<div class="divClass">
@@ -382,110 +388,7 @@
 					@endif
 					<div class="row playoffBracket">
 						<div class="col">
-							<main id="tournament" class="text-white" style="position:relative">
-								<ul class="round round-1">
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-								</ul>
-								<ul class="round round-2">
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top ">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-								</ul>
-								<ul class="round round-3">
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom">TBD <span>0</span></li>
-
-									<li class="spacer">&nbsp;</li>
-								</ul>
-								<ul class="round round-4">
-									<li class="spacer">&nbsp;</li>
-									
-									<li class="game game-top">TBD <span>0</span></li>
-									<li class="game game-spacer">&nbsp;</li>
-									<li class="game game-bottom ">TBD <span>0</span></li>
-									
-									<li class="spacer">&nbsp;</li>
-								</ul>		
-							</main>
+							@include('bracketology')
 						</div>
 					</div>
 				@endif
@@ -535,110 +438,7 @@
 				</div>
 				<div class="row playoffBracket">
 					<div class="col">
-						<main id="tournament" class="text-white" style="position:relative">
-							<ul class="round round-1">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-2">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-3">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-
-								<li class="spacer">&nbsp;</li>
-							</ul>
-							<ul class="round round-4">
-								<li class="spacer">&nbsp;</li>
-								
-								<li class="game game-top">TBD <span>0</span></li>
-								<li class="game game-spacer">&nbsp;</li>
-								<li class="game game-bottom">TBD <span>0</span></li>
-								
-								<li class="spacer">&nbsp;</li>
-							</ul>		
-						</main>
+						@include('bracketology')
 					</div>
 				</div>
 			@endif
