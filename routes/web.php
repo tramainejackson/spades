@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/payment/{team}', function () {
-    return view('payment');
+Route::get('/payment/{id}', function ($id) {
+	$team = \App\Team::find($id);
+    return view('payment', compact('team'));
 })->name('payment');
 
 Route::get('/', function () {

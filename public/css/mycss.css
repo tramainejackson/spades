@@ -89,6 +89,11 @@ h2.roundHeader {
     margin-right: auto;
     border-radius: 10px;
 }
+
+.payAppDesc {
+	font-size: 135%;
+}
+
 /*
  *  Flex Layout Specifics
 */

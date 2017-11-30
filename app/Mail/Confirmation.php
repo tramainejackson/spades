@@ -11,6 +11,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class Confirmation extends Mailable
 {
     use Queueable, SerializesModels;
+	
+	/**
+	* The team instance
+	*
+	* @var team
+	*/
+	public $team;
 
     /**
      * Create a new message instance.
@@ -29,6 +36,6 @@ class Confirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.confirm');
+        return $this->view('emails.confirm', compact('team'));
     }
 }
