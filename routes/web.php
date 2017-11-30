@@ -41,3 +41,5 @@ Route::resource('setting', 'SettingController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/registered_teams', 'TeamController@index')->name('registered_teams');

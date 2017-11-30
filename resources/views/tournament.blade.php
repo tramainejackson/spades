@@ -398,7 +398,7 @@
 						<h3 class="text-white">The tournament schedule will be posted on (Add Date) once registration has closed and bracket has been completed. If there is an odd number of teams, there will be playin games for the teams who register last.</h3>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row d-none d-sm-block">
 					<div class="col">
 						<div class="teamCount container-fluid">
 							<div class="row">
@@ -424,12 +424,12 @@
 							
 							<div class="row">
 								<div class="col-12">
-									<h2 class="text-light text-center">Currently Registered Teams</h2>
+									<h2 class="text-light text-center py-sm-3">Currently Registered Teams</h2>
 								</div>
 								
 								@foreach($teamCount as $team)
 									<div class="col-3 my-1 text-center">
-										<button class="btn btn-light w-75" type="button">{{ $team->team_name }}</button>
+										<button class="btn btn-light w-75 text-truncate" type="button">{{ $team->team_name }}</button>
 									</div>
 								@endforeach
 							</div>
@@ -451,28 +451,9 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
-			<div class="d-flex flex-column mx-auto">
-				<h2 class="">Contact Us</h2>
-				<div class="">
-					<span class="font-weight-bold pr-2">Email:</span>
-					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
-				</div>
-				<div class="">
-					<span class="font-weight-bold pr-2">Phone:</span>
-					<span>215.999.9999</span>
-				</div>
-			</div>
-			<div class="d-flex flex-column mx-auto">
-				<p class="">10% of all proceeds will be donated to charity</p>
-				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
-				<div class="">
-					<div class="">
-						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
-					</div>
-				</div>
-			</div>
-		</footer>
+		
+		@include('footer')
+		
 		<script type="text/javascript">
 			$('nav ul li:nth-of-type(3) a').addClass('active');			
 		</script>

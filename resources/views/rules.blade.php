@@ -1,7 +1,7 @@
 @extends('layouts.app')
 	@section('content')
 		<div class="row h-100">
-			<div class="col text-white">
+			<div class="col my-4 text-white">
 				<div class="" style="">
 					<h1 class="display-4 my-4 text-center">Rules</h1>
 				</div>
@@ -51,28 +51,9 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
-			<div class="d-flex flex-column mx-auto">
-				<h2 class="">Contact Us</h2>
-				<div class="">
-					<span class="font-weight-bold pr-2">Email:</span>
-					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
-				</div>
-				<div class="">
-					<span class="font-weight-bold pr-2">Phone:</span>
-					<span>215.999.9999</span>
-				</div>
-			</div>
-			<div class="d-flex flex-column mx-auto">
-				<p class="">10% of all proceeds will be donated to charity</p>
-				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
-				<div class="">
-					<div class="">
-						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
-					</div>
-				</div>
-			</div>
-		</footer>
+		
+		@include('footer')
+		
 		<script type="text/javascript">
 			$('nav ul li:nth-of-type(4) a').addClass('active');			
 		</script>

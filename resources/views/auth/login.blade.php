@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-12 col-lg-12 col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-					<h2 class="text-center text-light">Login</h2>
-				</div>
+<div class="container fullHeight">
+    <div class="row fullHeight">
+        <div class="col-12 fullHeight">
+            <div class="panel panel-default d-flex align-items-stretch justify-content-center flex-column fullHeight">
 
                 <div class="panel-body">
+					<div class="panel-heading">
+						<h2 class="text-center text-light mb-4">Login</h2>
+					</div>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -17,13 +17,13 @@
                             <label for="email" class="col-md-6 control-label mx-auto d-block text-light">E-Mail Address</label>
 
                             <div class="col-md-6 mx-auto d-block">
-								<div class="input-group">
-									<span class="oi oi-person input-group-addon"></span>
-									<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" style="border-top: solid 2px #e9ecef;" required autofocus>
+								<div class="input-group" style="border: inset 1px darkgray; border-radius: 6px;">
+									<span class="oi oi-person input-group-addon" style="border: none; background-color: #fff;"></span>
+									<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" style="margin: 0; border: none; background-color: #fff;" required autofocus>
 								</div>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="help-block text-danger">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
@@ -34,13 +34,13 @@
                             <label for="password" class="col-md-6 control-label mx-auto d-block text-light">Password</label>
 
                             <div class="col-md-6 mx-auto d-block">
-								<div class="input-group">
-									<span class="oi oi-lock-locked input-group-addon"></span>
-									<input id="password" type="password" class="form-control" name="password" style="border-top: solid 2px #e9ecef;" required>
+								<div class="input-group" style="border: inset 1px darkgray; border-radius: 6px;">
+									<span class="oi oi-lock-locked input-group-addon" style="border: none; background-color: #fff;"></span>
+									<input id="password" type="password" class="form-control" name="password"  style="margin: 0; border: none; background-color: #fff;" required>
 								</div>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
+                                    <span class="help-block text-danger">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif

@@ -2,7 +2,7 @@
 	@section('content')
 		<div class="row flex-column align-items-center justify-content-center" style="position:relative">
 			<div class="text-white my-4 display-4">
-				<h1 class="display-3">Registration</h1>
+				<h1 class="display-3 text-truncate">Registration</h1>
 			</div>
 			@php $settings = \App\Setting::where('id', 1)->first();	@endphp
 			@if($settings->start_tourny == "N")
@@ -45,7 +45,7 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3{{ $settings->start_tourny == 'Y' ? ' fixed-bottom' : '' }}">
+		<footer class="d-flex justify-content-center flex-column flex-sm-row bg-dark text-white text-center py-3{{ $settings->start_tourny == 'Y' ? ' fixed-bottom' : '' }}">
 			<div class="d-flex flex-column mx-auto">
 				<h2 class="">Contact Us</h2>
 				<div class="">
@@ -57,6 +57,7 @@
 					<span>215.999.9999</span>
 				</div>
 			</div>
+			<div class="lg-divider d-sm-none"></div>
 			<div class="d-flex flex-column mx-auto">
 				<p class="">10% of all proceeds will be donated to charity</p>
 				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>

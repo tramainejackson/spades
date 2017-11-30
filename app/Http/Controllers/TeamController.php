@@ -6,6 +6,7 @@ use App\Team;
 use App\Mail\Confirmation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -17,7 +18,7 @@ class TeamController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('store');
+        $this->middleware('auth')->except(['store', 'index']);
     }
 	
     /**
@@ -28,7 +29,12 @@ class TeamController extends Controller
     public function index()
     {
 		$teams = Team::all();
-        return view('teams.index', compact('teams'));
+
+		if(Auth::guest()) {
+			return view('teams', compact('teams'));
+		} else {
+			return view('teams.index', compact('teams'));
+		}
     }
 
     /**

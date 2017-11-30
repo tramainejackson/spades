@@ -2,10 +2,12 @@
 		Spades Tournament
 ------------------------------------
 
-Update mobile style
+Once a champ is crowned, add a modal to home page with team info and some fireworks
 Make https
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
+Done: Update mobile style
+Done: Fix Login Form Style
 Done: Associate spades2spades email
 Done: Correct email issue
 Done: Get picture of each card and add to rules page

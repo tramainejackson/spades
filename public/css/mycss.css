@@ -59,7 +59,8 @@ html, body {
 }
 
 .lg-divider {
-	
+	border: solid 0.5px #d8d8d8;
+    margin: 30px 50px;
 }
 
 .card-body {
@@ -158,6 +159,10 @@ border-top:1px solid #aaa;
 	color: whitesmoke;
 }
 
+.oi {
+	top: 0px;
+}
+
 @media (max-width: 576px) {
 	/* Adding a fixed background to a mobile site*/
 	body:before {
@@ -225,7 +230,7 @@ border-top:1px solid #aaa;
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 	html, body {
 		background: url(/images/spades-table.jpg) no-repeat center center;
 		-webkit-background-size: cover;
@@ -234,7 +239,13 @@ border-top:1px solid #aaa;
 		background-size: cover;
 		background-attachment: fixed;
 	}
+	
+	.nav-link {
+		font-size: 175%;
+	}
+}
 
+@media (min-width: 992px) {
 	#app {
 		margin-bottom: 200px;
 	}
@@ -245,10 +256,6 @@ border-top:1px solid #aaa;
 
 	.welcomeHeader p {
 		font-size: 150%;
-	}
-
-	.oi {
-		top: 0px;
 	}
 }
 
@@ -263,10 +270,6 @@ border-top:1px solid #aaa;
 	
 	form input[type="submit"] {
 		color: white !important;
-	}
-	
-	.nav-link {
-		font-size: 175%;
 	}
 }
 

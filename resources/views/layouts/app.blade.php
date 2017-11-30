@@ -56,6 +56,7 @@
 							@if (Auth::guest())
 								<li class="text-center"><a class="navLink" href="{{ route('welcome') }}">Home</a></li>
 								<li class="text-center"><a class="navLink" href="{{ route('registration') }}">Register</a></li>
+								<li class="text-center"><a class="navLink" href="{{ route('registered_teams') }}">Registered Teams</a></li>
 								<li class="text-center"><a class="navLink" href="{{ route('tournament') }}">Tournament</a></li>
 								<li class="text-center"><a class="navLink" href="{{ route('rules') }}">Rules</a></li>
 							@else
