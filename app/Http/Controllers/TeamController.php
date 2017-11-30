@@ -67,7 +67,7 @@ class TeamController extends Controller
 			$setting->create_tourney_settings();			
 
 			if($request->pif == null) {
-				// Mail::to($team->email)->send(new Confirmation($team));
+				\Mail::to($team->email)->send(new Confirmation($team));
 				return view('payment', compact('team'));
 			} else {
 				return redirect()->action('TeamController@index')->with('status', 'Team added successfully');

@@ -1,29 +1,26 @@
-@extends('layouts.app')
-	@section('content')
-		<div class="row flex-column align-items-center justify-content-center welcomeHeader" style="position:relative">
-			<div class="text-white my-5 fullHeight" style="">
-				<h1 class="display-2 text-center mb-5" style="position:relative">Spades</h1>
-				<h1 class="display-3 text-center text-truncate mb-5" style="position:relative">Tournament</h1>
-				<h1 class="display-4 text-center pb-4 mb-5" style="position:relative">2018</h1>
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spades Tournament</title>
+</head>
+<body>
+    <div id="app" class="container">
+		<div style="position:relative; height:100%;">
+			<div style="box-sizing: border-box;">
+				<h2 class="" style="border-bottom:1px solid gray; text-align: center; background: #5b955a; color: whitesmoke; padding: 35px;">Philly Spades Tournament</h2>
 			</div>
-		
 			<div class="">
-				<div class="bg-white py-5 px-3 fullHeight">
-					<h2 class="text-center pb-4 mb-3 mx-3 display-2" style="border-bottom:1px solid gray">Welcome</h2>
-					<p class="px-sm-5">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 64 team bracket. The first 64 teams to register will get a chance to reserve a spot to become the first true spade champion of Philly. Click <a href="{{ route('registration') }}">here</a> to register</p>
-				</div>
+				<h3 style="margin: 35px;">Team Registration:</h3>
+				<p style="padding: 35px;">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 64 team bracket. Your team has been registered as one of the 64.</p>
+				<p class="">If your team has already paid, you should have received an email confirming it. If your team has not paid for the tournamet, you can click <a href="/payment/">here</a> and select one of the options for payments</p>
 			</div>
-		
-			<div class="py-5 px-3 text-white fullHeight">
-				<h2 class="text-center pb-4 mb-3 mx-3 display-4">Registration</h2>
-				<p class="px-sm-5">To register a team click <a href="{{ route('registration') }}">here</a>. The entry fee for every team will be $50. It is first come first serve and registration will close once we have reached 64 teams.</p>
-				<p class=""></p>
-			</div>
+			<footer style="box-sizing: border-box;">
+				<h3 style="border-bottom:1px solid gray; text-align: center; background: #5b955a; color: whitesmoke; padding: 35px;">2017 {{ config('app.name') }}. All rights reserved.</h3>
+			</footer>
 		</div>
-	@endsection
-	
-	@section('footer')
-		<script type="text/javascript">
-			$('nav ul li:first-of-type a').addClass('active');			
-		</script>
-	@endsection
+	</div>
+</body>
