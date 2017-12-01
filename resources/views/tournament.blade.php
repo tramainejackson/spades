@@ -398,7 +398,7 @@
 						<h3 class="text-white">The tournament schedule will be posted on (Add Date) once registration has closed and bracket has been completed. If there is an odd number of teams, there will be playin games for the teams who register last.</h3>
 					</div>
 				</div>
-				<div class="row d-none d-sm-block">
+				<div class="row d-none d-md-block">
 					<div class="col">
 						<div class="teamCount container-fluid">
 							<div class="row">

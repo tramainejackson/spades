@@ -1,4 +1,4 @@
-<footer class="d-flex justify-content-center flex-column flex-sm-row bg-dark text-white text-center py-3">
+<footer class="d-flex justify-content-center flex-column flex-md-row bg-dark text-white text-center py-3">
 	<div class="d-flex flex-column mx-auto">
 		<h2 class="">Contact Us</h2>
 		<div class="">
@@ -10,7 +10,7 @@
 			<span>215.999.9999</span>
 		</div>
 	</div>
-	<div class="lg-divider d-sm-none"></div>
+	<div class="lg-divider d-md-none"></div>
 	<div class="d-flex flex-column mx-auto">
 		<p class="">10% of all proceeds will be donated to charity</p>
 		<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>

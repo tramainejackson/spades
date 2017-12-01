@@ -163,7 +163,7 @@ border-top:1px solid #aaa;
 	top: 0px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
 	/* Adding a fixed background to a mobile site*/
 	body:before {
 		content: "";
@@ -216,7 +216,6 @@ border-top:1px solid #aaa;
 	}
 
 	.welcomeHeader h1 {
-		margin-top: -50%;
 	}
 
 	.playoffBracket {
@@ -227,6 +226,14 @@ border-top:1px solid #aaa;
 
 	.round {
 		width: -webkit-fill-available;
+	}
+	
+	.tournySettingsDiv {
+		position: relative;
+	}
+	
+	form * {
+		font-size: 115% !important;
 	}
 }
 
@@ -243,6 +250,10 @@ border-top:1px solid #aaa;
 	.nav-link {
 		font-size: 175%;
 	}
+	
+	form * {
+		font-size: 115% !important;
+	}
 }
 
 @media (min-width: 992px) {
@@ -256,6 +267,10 @@ border-top:1px solid #aaa;
 
 	.welcomeHeader p {
 		font-size: 150%;
+	}
+	
+	form * {
+		font-size: 115% !important;
 	}
 }
 

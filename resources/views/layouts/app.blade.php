@@ -30,7 +30,7 @@
 					<div class="navbar-header">
 
 						<!-- Collapsed Hamburger -->
-						<button type="button" class="navbar-toggle collapsed fixed-top d-sm-none m-1 border-0 menuMobile" data-toggle="collapse" data-target="#app-navbar-collapse">
+						<button type="button" class="navbar-toggle collapsed fixed-top d-md-none m-1 border-0 menuMobile" data-toggle="collapse" data-target="#app-navbar-collapse">
 							<span class="sr-only">Toggle Navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -63,31 +63,19 @@
 								<li class="text-center"><a class="navLink" href="/teams">Teams</a></li>
 								<li class="text-center"><a class="navLink" href="/games">Games</a></li>
 								<li class="text-center"><a class="navLink" href="/setting">Settings</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-										{{ Auth::user()->name }} <span class="caret"></span>
-									</a>
+								<li class="text-center">
+									<a href="{{ route('logout') }}" class="navLink" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
-									<ul class="dropdown-menu" role="menu">
-										<li>
-											<a href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-														 document.getElementById('logout-form').submit();">
-												Logout
-											</a>
-
-											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-												{{ csrf_field() }}
-											</form>
-										</li>
-									</ul>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
 								</li>
 							@endif
 						</ul>
 					</div>
 					
 					<!-- Default Nav -->
-					<ul class="d-none d-sm-flex nav nav-pills nav-fill w-100">
+					<ul class="d-none d-md-flex nav nav-pills nav-fill w-100">
 						<!-- Authentication Links -->
 						@if (Auth::guest())
 							<li class="text-center nav-item"><a class="nav-link text-white" href="{{ route('welcome') }}">Home</a></li>

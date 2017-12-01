@@ -5,6 +5,9 @@ $(document).ready(function() {
 	$('.welcomeHeader h1:nth-of-type(3)').animate({top:'10%'}, 2000);
 	$('.welcomeHeader h1:last-of-type').animate({top:'15%'}, 2000);
 	
+	// Change the word tournament to tourney on home page of smaller screen
+	$(window).width() < 576 ? $('.welcomeHeader h1:nth-of-type(3)').text('Tourney') : '';
+	
 	// Make the nav placeholder the same size as the nav for 
 	// fixed nav animation
 	$('.navPlaceHolder').css({'height': $('nav').outerHeight()});

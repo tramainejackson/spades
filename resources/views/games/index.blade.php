@@ -32,7 +32,7 @@
 					@if($nonPlayInGames->isNotEmpty())
 						<div class="row">
 							@foreach($nonPlayInGames as $game)
-								<div class="col col-4 my-3">
+								<div class="col-12 col-sm-6 col-md-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
 											<h2 class="text-center">
@@ -183,7 +183,7 @@
 					@if($nonPlayInGames->isNotEmpty())
 						<div class="row">
 							@foreach($nonPlayInGames as $game)
-								<div class="col col-4 my-3">
+								<div class="col-12 col-sm-6 col-md-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
 											<h2 class="text-center">
@@ -211,7 +211,7 @@
 								<h3 class="text-white">Play In Games</h3>
 							</div>
 							@foreach($getPlayInGames as $game)
-								<div class="col col-4 my-3">
+								<div class="col-12 col-sm-6 col-md-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
 											<h2 class="text-center">
@@ -365,7 +365,7 @@
 								<h3 class="text-white">Play In Games</h3>
 							</div>
 							@foreach($getPlayInGames as $game)
-								<div class="col col-4 my-3">
+								<div class="col-12 col-sm-6 col-md-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
 											<h2 class="text-center">
@@ -391,7 +391,7 @@
 					@if($nonPlayInGames->isNotEmpty())
 						<div class="row">
 							@foreach($nonPlayInGames as $game)
-								<div class="col col-4 my-3">
+								<div class="col-12 col-sm-6 col-md-4 my-3">
 									<div class="card">
 										<div class="card-header {{ $game->game_complete == 'Y' ? 'bg-success text-white' : 'bg-danger text-white'}}">
 											<h2 class="text-center">
@@ -541,7 +541,7 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
+		<footer class="d-flex justify-content-center flex-column flex-md-row bg-dark text-white text-center py-3{{ $settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N' ? ' fixed-bottom' : '' }}">
 			<div class="d-flex flex-column mx-auto">
 				<h2 class="">Contact Us</h2>
 				<div class="">
@@ -553,6 +553,7 @@
 					<span>215.999.9999</span>
 				</div>
 			</div>
+			<div class="lg-divider d-md-none"></div>
 			<div class="d-flex flex-column mx-auto">
 				<p class="">10% of all proceeds will be donated to charity</p>
 				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>

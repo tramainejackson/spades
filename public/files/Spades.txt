@@ -6,6 +6,7 @@ Once a champ is crowned, add a modal to home page with team info and some firewo
 Make https
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
+Done: Update mobile admin style
 Done: Update mobile style
 Done: Fix Login Form Style
 Done: Associate spades2spades email
