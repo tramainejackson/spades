@@ -2,16 +2,16 @@
 	@section('content')
 		<div class="row mt-3">
 			<div class="col text-white">
-				<div class="d-flex justify-content-center align-items-center">
-					<h1 class="display-4 my-4 align-self-center">View Teams</h1>
-					<a href="{{ route('teams.create') }}" class="btn btn-success position-absolute" style="right:25%;">Add Team</a>
+				<div class="d-flex justify-content-center align-items-center flex-column flex-lg-row">
+					<h1 class="col-md-8 display-4 my-4 align-self-center text-center text-lg-right">View Teams</h1>
+					<a href="{{ route('teams.create') }}" class="btn btn-success btn-lg px-5 ml-lg-auto">Add Team</a>
 				</div>
 			</div>
 		</div>
 		@if($teams->isNotEmpty())
 			<div class="row">
 				@foreach ($teams as $team)
-					<div class="col-12 col-md-4 text-white">
+					<div class="col-12 col-md-6 col-lg-4 text-white">
 						<div class="card my-3 text-dark">
 							<div class="card-header row">
 								<h2 class="col-10 text-center d-inline-block">{{ $team->team_name }}</h2>

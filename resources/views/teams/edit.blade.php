@@ -2,10 +2,9 @@
 	@section('content')
 		<div class="row mt-3">
 			<div class="col text-white">
-				<div class="" style="">
-					<h1 class="display-4 my-4 text-center">
-						<a href="{{ route('teams.create') }}" class="btn btn-success float-right">Add Team</a>
-					Edit Teams</h1>
+				<div class="d-flex justify-content-center align-items-center flex-column flex-lg-row" style="">
+					<h1 class="col-md-8 display-4 my-4 align-self-center text-center text-lg-right">Edit Teams</h1>
+					<a href="{{ route('teams.create') }}" class="btn btn-success btn-lg px-5 ml-lg-auto">Add Team</a>
 				</div>
 			</div>
 		</div>
