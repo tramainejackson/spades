@@ -8,6 +8,9 @@ $(document).ready(function() {
 	// Change the word tournament to tourney on home page of smaller screen
 	$(window).width() < 576 ? $('.welcomeHeader h1:nth-of-type(3)').text('Tourney') : '';
 	
+	// Remove fixed bottom when smaller screen
+	$(window).width() < 767 ? $('footer').removeClass('fixed-bottom') : '';
+			
 	// Make the nav placeholder the same size as the nav for 
 	// fixed nav animation
 	$('.navPlaceHolder').css({'height': $('nav').outerHeight()});

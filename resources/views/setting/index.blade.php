@@ -71,6 +71,6 @@
 			</div>
 		</footer>
 		<script type="text/javascript">
-			$('nav ul li:nth-of-type(3) a').addClass('active');			
+			$('nav ul li:nth-of-type(3) a').addClass('active');
 		</script>
 	@endsection
