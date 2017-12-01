@@ -19,6 +19,8 @@
 	<!-- Styles -->
 	<link href="/css/app.css" rel="stylesheet" type="text/css">
 	<link href="/css/mycss.css" rel="stylesheet" type="text/css">
+	
+	@yield('addt_style')
 </head>
 <body>
     <div id="app" class="container">

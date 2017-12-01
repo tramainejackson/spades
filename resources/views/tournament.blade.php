@@ -16,14 +16,15 @@
 					@php $champTeam = \App\Team::where('id', $settings->champion_id)->first(); @endphp
 					<div class="col col-12 p-5 text-center champDiv">
 						<div class="">
-							<h3 class="display-2">Champions</h3>
+							<h3 class="display-2">2018 Champions</h3>
 						</div>
 						<div class="">
-							<h4 class="display-3">{{ $champTeam->team_name }}</h4>
+							<h4 class="display-3 mb-4">{{ $champTeam->team_name }}</h4>
 						</div>
-						<div class="">
-							<p class="">{{ $champTeam->player_1 }}</p>
-							<p class="">{{ $champTeam->player_2 }}</p>
+						<div class="d-flex flex-column align-items-center justify-content-center">
+							<p class="display-4 m-0 p-1">{{ $champTeam->player_1 }}</p>
+							<span class="" style="font-size:175%">&</span>
+							<p class="display-4 m-0 p-1">{{ $champTeam->player_2 }}</p>
 						</div>
 					</div>
 				@endif

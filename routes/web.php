@@ -16,7 +16,8 @@ Route::get('/payment/{id}', function ($id) {
 })->name('payment');
 
 Route::get('/', function () {
-    return view('welcome');
+	$setting = \App\Setting::where('id', 1)->first();
+    return view('welcome', compact('setting'));
 })->name('welcome');
 
 Route::get('/registration', function () {

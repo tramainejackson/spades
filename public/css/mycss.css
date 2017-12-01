@@ -9,6 +9,11 @@ html, body {
 
 .container {}
 
+canvas {
+	cursor: crosshair;
+	display: block;
+}
+
 .stickyBgrd {
 	background: rgba(0, 0, 0, 0.95);
 }
