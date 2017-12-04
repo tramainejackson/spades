@@ -32,7 +32,7 @@
 				@if($settings->playin_games == 'N')
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $teams->count() - $settings->teams_with_bye; @endphp
+					@php $teams = $teams->count(); @endphp
 
 					@if($rounds > 0)
 						<div class="row playoffBracket text-white">
@@ -165,7 +165,7 @@
 					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $teams->count() - $settings->teams_with_bye; @endphp
+					@php $teams = $settings->total_teams - $getPlayInGames->count(); @endphp
 					
 					@if(fmod($teams, 2) != 0)
 						@php $teams = 32; @endphp

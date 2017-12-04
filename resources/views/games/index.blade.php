@@ -113,7 +113,7 @@
 															
 															<li class="game game-top <?php echo $playoffs2->winning_team_id == $playoffs2->home_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->home_seed . ") " . $playoffs2->home_team; ?> <span><?php echo $playoffs2->home_team_score; ?></span></li>
 															<li class="game game-spacer">&nbsp;</li>
-															<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->way_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
+															<li class="game game-bottom <?php echo $playoffs2->winning_team_id == $playoffs2->away_team_id ? "winner" : ""; ?>"><?php echo $playoffs2->away_seed . ") " . $playoffs2->away_team; ?> <span><?php echo $playoffs2->away_team_score; ?></span></li>
 														<?php } ?>
 													<?php } else { ?>
 														<?php $playoffs = $playoffSchedule->splice($findGameIndex,1)->first(); ?>
@@ -173,7 +173,7 @@
 					@php $nonPlayInGames = \App\Game::where('playin_game', 'N')->orderBy('round', 'desc')->get(); @endphp
 					@php $x = 1; @endphp
 					@php $rounds = $settings->total_rounds; @endphp
-					@php $teams = $teams->count() - $settings->teams_with_bye; @endphp
+					@php $teams = $settings->total_teams - $getPlayInGames->count(); @endphp
 					
 					@if(fmod($teams, 2) != 0)
 						@php $teams = 32; @endphp

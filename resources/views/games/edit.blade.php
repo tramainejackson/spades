@@ -68,7 +68,7 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center flex-column flex-md-row bg-dark text-white text-center py-3 fixed-bottom">
+		<footer class="d-flex justify-content-center flex-column flex-md-row bg-dark text-white text-center py-3">
 			<div class="d-flex flex-column mx-auto">
 				<h2 class="">Contact Us</h2>
 				<div class="">
