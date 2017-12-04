@@ -3,9 +3,9 @@
 ------------------------------------
 
 Make https
-Add a progress bar when team registers for the delay
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
+Done: Add a spinner when team registers for the delay
 Done: Fix brackets
 Done: Take fixed bottom off of teams edit page
 Done:Once a champ is crowned, add a modal to home page with team info and some fireworks

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 	@section('content')
+		<div class="modal fade loadingSpinner">
+			<div class="loader"></div>
+			<div class="">
+				<p class="text-white d-table mx-auto display-4">Registering....</p>
+			</div>
+		</div>
 		<div class="row flex-column align-items-center justify-content-center" style="position:relative">
 			<div class="text-white my-4 display-4">
 				<h1 class="display-3 text-truncate">Registration</h1>
@@ -12,7 +18,7 @@
 				<div class="d-flex flex-column align-items-center justify-content-center m-3 px-3 pt-4 regForm">
 					<div class="">
 						<h2 class="text-white">Registration Form</h2>
-						{!! Form::open(['action' => 'TeamController@store']) !!}
+						{!! Form::open(['action' => 'TeamController@store', 'class' => 'player_reg_form']) !!}
 							<div class="form-group">
 								{{ Form::label('email', 'Email Address', ['class' => 'form-control-label text-white']) }}
 								{{ Form::email('email', '', ['class' => 'form-control', 'required']) }}
@@ -69,6 +75,10 @@
 			</div>
 		</footer>
 		<script type="text/javascript">
+			$(".player_reg_form").submit(function(e){	
+				$('.loadingSpinner').modal('show');
+			});
+			
 			$('nav ul li:nth-of-type(2) a').addClass('active');			
 		</script>
 	@endsection
