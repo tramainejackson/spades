@@ -9,6 +9,10 @@
 			<span class="font-weight-bold pr-2">Phone:</span>
 			<span>215.939.8818 | 215.800.5269</span>
 		</div>
+		<div class="">
+			<span class="font-weight-bold pr-2">Location:</span>
+			<span>American Legion Post 153 | 2514 S 24th Street</span>
+		</div>
 	</div>
 	<div class="lg-divider d-md-none"></div>
 	<div class="d-flex flex-column mx-auto">

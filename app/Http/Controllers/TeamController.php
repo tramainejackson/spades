@@ -28,11 +28,11 @@ class TeamController extends Controller
      */
     public function index()
     {
-		$teams = Team::all();
-
 		if(Auth::guest()) {
+			$teams = Team::where('pif', 'Y')->get();
 			return view('teams', compact('teams'));
 		} else {
+			$teams = Team::all();
 			return view('teams.index', compact('teams'));
 		}
     }

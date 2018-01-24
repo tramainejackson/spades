@@ -36,6 +36,6 @@ class Confirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.confirm', compact('team'));
+        return $this->subject('Spades King Tournament Confirmation')->view('emails.confirm', compact('team'));
     }
 }

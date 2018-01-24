@@ -2,9 +2,12 @@
 		Spades Tournament
 ------------------------------------
 
+Update rules link for downloadable rules
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
-Only add count for paid teams
+Done: Add address and time to registration email and website
+Done: Add flyer to the website
+Done: Only add count for paid teams
 Done: Make https
 Done: Add a spinner when team registers for the delay
 Done: Fix brackets
