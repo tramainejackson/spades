@@ -12,15 +12,16 @@
 				<div class="">
 					<h3 class="pb-3">The following rules will apply to every game:</h3>
 					<ul class="" style="font-size:125%;">
+						<li class="">Championship game will be the best out of 3 games</li>
 						<li class="">Each player can only play on one team. If eliminated, there will be no re-entry into the tournament</li>
 						<li class="">All games go to 350 points</li>
-						<li class="">No passing of cards (if you have 0 spades start praying)</li>
+						<li class="">No passing of cards (if you have 0 spades hope for the best)</li>
 						<li class="">Minimum bid is 4 books</li>
 						<li class="">10 made books will result in 200 points</li>
-						<li class="">Blinds bids start at a bid 6 books</li>
+						<li class="">Blind bids start at a bid 6 books</li>
 						<li class="">10 made books on the first hand will not end the game</li>
 						<li class="">Renege will cost your team 3 books</li>
-						<li class="">Failure to bring your teams bid (set) twice in one game will result in the end of game.</li>
+						<li class="">Failure to bring your teams bid (set) three times in one game will result in the end of game.</li>
 						<li class="">5 over books throught the entirity of the game will result in your team losing 50 points (does not count as a set)</li>
 						<li class="">There will be a list of rules at every table</li>
 						<li class="">Spades Order (From Top - Bottom)

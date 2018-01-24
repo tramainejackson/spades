@@ -11,7 +11,7 @@
 				<p class="text-justify text-white">Please select one of the options below. Once payment is received, you will receive and email to <i>{{ $team->email }}</i> with time, location, and any other important information.</p>
 			</div>
 			<div class="p-4 my-4">
-				<a href="https://www.paypal.me/actionjack/50" class="">
+				<a href="https://www.paypal.me/actionjack/70" class="">
 					<div class="text-center" style="">
 						<img src="/images/paypal_icon.png" class="img-fluid" style="max-height:250px;" />
 					</div>
@@ -21,7 +21,7 @@
 				</a>
 			</div>
 			<div class="p-4 my-4">
-				<a href="https://cash.me/$tramainejack/50" class="">
+				<a href="https://cash.me/$tramainejack/70" class="">
 					<div class="text-center" style="">
 						<img src="/images/cash_icon.png" class="" style="max-height:250px;" />
 					</div>

@@ -7,7 +7,7 @@
 		</div>
 		<div class="">
 			<span class="font-weight-bold pr-2">Phone:</span>
-			<span>215.999.9999</span>
+			<span>215.939.8818 | 215.800.5269</span>
 		</div>
 	</div>
 	<div class="lg-divider d-md-none"></div>

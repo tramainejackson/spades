@@ -2,9 +2,10 @@
 		Spades Tournament
 ------------------------------------
 
-Make https
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
+Only add count for paid teams
+Done: Make https
 Done: Add a spinner when team registers for the delay
 Done: Fix brackets
 Done: Take fixed bottom off of teams edit page
