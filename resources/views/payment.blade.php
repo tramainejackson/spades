@@ -7,9 +7,6 @@
 			</div>
 		</div>
 		<div class="row flex-column align-items-center justify-content-center mt-3" style="position:relative">
-			<div class="p-5">
-				<p class="text-justify text-white">Please select one of the options below. Once payment is received, you will receive and email to <i>{{ $team->email }}</i> with time, location, and any other important information.</p>
-			</div>
 			<div class="p-4 my-4">
 				<a href="https://www.paypal.me/actionjack/70" class="">
 					<div class="text-center" style="">
@@ -21,7 +18,7 @@
 				</a>
 			</div>
 			<div class="p-4 my-4">
-				<a href="https://cash.me/$tramainejack/70" class="">
+				<a href="https://cash.me/$spadesking/70" class="">
 					<div class="text-center" style="">
 						<img src="/images/cash_icon.png" class="" style="max-height:250px;" />
 					</div>
@@ -34,28 +31,8 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center bg-dark text-white text-center py-3">
-			<div class="d-flex flex-column mx-auto">
-				<h2 class="">Contact Us</h2>
-				<div class="">
-					<span class="font-weight-bold pr-2">Email:</span>
-					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
-				</div>
-				<div class="">
-					<span class="font-weight-bold pr-2">Phone:</span>
-					<span>215.999.9999</span>
-				</div>
-			</div>
-			<div class="d-flex flex-column mx-auto">
-				<p class="">10% of all proceeds will be donated to charity</p>
-				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
-				<div class="">
-					<div class="">
-						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
-					</div>
-				</div>
-			</div>
-		</footer>
+		@include('footer')
+		
 		<script type="text/javascript">
 			$('nav ul li:nth-of-type(2) a').addClass('active');			
 		</script>
