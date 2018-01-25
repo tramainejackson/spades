@@ -36,7 +36,7 @@ Route::get('/rules', function () {
 })->name('rules');
 
 Route::get('/tournament', function () {
-	$teamCount = \App\Team::where('pif', 'Y');
+	$teamCount = \App\Team::where('pif', 'Y')->get();
     return view('tournament', compact('teamCount'));
 })->name('tournament');
 
