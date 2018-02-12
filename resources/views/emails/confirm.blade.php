@@ -103,7 +103,7 @@
 					<li class="">Player 1: {{ $team->player_1 }}</li>
 					<li class="">Player 2: {{ $team->player_2 }}</li>
 				</ul>
-				<p style="padding: 0px 35px 15px;">Welcome to the first annual spades tournament. Your team has been registered as one of the 64. This tournament is going to be the March Madness style, 64 team bracket. Tournament will be single elimination and the championship round will be best out of 3 games. All games will start promptly at 2:00PM at American Legion Post 153<br/>2514 S 24th Street, Philadelphia, PA 19145</p>
+				<p style="padding: 0px 35px 15px;">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 6 rounds, single elimination. Championship round will be best out of 3 games. All games will start promptly at 2:00PM at American Legion Post 153<br/>2514 S 24th Street, Philadelphia, PA 19145</p>
 				<p style="padding: 0px 35px 35px;">If your team has already paid, you should have received an email confirming it. If your team has not paid for the tournamet, you can click <a href="{{ route('payment', $team) }}">here</a> and select one of the options for payment. <span style="color: darkred;">If your registration fee is not paid within one week of registration, your spot will be released and you will have to re-register.</span></p>
 			</div>
 			<div class="downloadable_flyer">

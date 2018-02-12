@@ -54,7 +54,7 @@
 					<p class="px-sm-5">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 6 rounds, single game elimination. It's first come first serve so make sure you register your team early. Dont' miss out on your chance to proclaim the first true spade champion of Philly. Click <a href="{{ route('registration') }}" class="text-dark"><u>here</u></a> to register.</p>
 					<p class="px-sm-5">Of course everybody plays the game a little differently depending on where you're from so we have narrowed down the rules to most common way of playing. Check out the list of rules <a href="/rules" class="text-dark"><u>here</u>.</a> Rules will be attached to every table for each game</p>
 					<p class="px-sm-5">There will be a grand prize for the winner (a check will be given to the winning team). If all 64 slots are satisfied, the grand prizes will be $1,000.</p>
-					<p class="px-sm-5">There will also be a light buffet and non-alcoholic available. The event will be BYOB. All games will start promptly at 2:00PM on Sunday April 15th.</p>
+					<p class="px-sm-5">There will also be a light buffet and a cash bar. All games will start promptly at 2:00PM on Sunday April 15th.</p>
 					<p class="px-sm-5 text-center"><a class="btn btn-lg btn-outline-success" href="{{ asset('/images/spades_flyer.jpg') }}" target="_blank">Spades Tournament Flyer</a></p>
 				</div>
 			</div>
