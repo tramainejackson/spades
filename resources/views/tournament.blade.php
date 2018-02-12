@@ -409,7 +409,7 @@
 								</div>
 							</div>
 							
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col">
 									@if($teamCount->count() < 64)
 										<h2 class="text-light">Remaining Open Slots 
@@ -422,7 +422,7 @@
 										</h2>
 									@endif
 								</div>
-							</div>
+							</div> -->
 							
 							<div class="row">
 								<div class="col-12">
