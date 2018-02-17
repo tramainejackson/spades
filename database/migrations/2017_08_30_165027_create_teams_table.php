@@ -20,6 +20,7 @@ class CreateTeamsTable extends Migration
             $table->string('player_2', 50)->nullable();
             $table->string('email', 50)->nullable();
             $table->char('pif', 1)->default('N');
+            $table->char('admin_created', 1)->default('N');
             $table->timestamps();
         });
     }
