@@ -10,6 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Test email to style it
+// Route::get('/email_test/{id}', function ($id) {
+	// $team = \App\Team::find($id);
+    // return view('emails.confirm', compact('team'));
+// })->name('email_test');
+
 Route::get('/payment/{id}', function ($id) {
 	$team = \App\Team::find($id);
     return view('payment', compact('team'));
@@ -29,7 +36,7 @@ Route::get('/rules', function () {
 })->name('rules');
 
 Route::get('/tournament', function () {
-	$teamCount = \App\Team::all();
+	$teamCount = \App\Team::where('pif', 'Y')->get();
     return view('tournament', compact('teamCount'));
 })->name('tournament');
 

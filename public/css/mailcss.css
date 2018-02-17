@@ -1,0 +1,62 @@
+div {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a:not(.flyer) {
+	color: black;
+	text-decoration: underline;
+}
+
+a.flyer.btn {
+	color: #28a745;
+	background-image: none;
+	background-color: transparent;
+	display: inline-block;
+	font-weight: normal;
+	text-align: center;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-color: #28a745;
+	padding: 0.5rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.25;
+	border-radius: 0.25rem;
+	white-space: initial;
+	margin: 0 30%;
+	width: 35%;
+	font-size: 150%;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	-webkit-text-decoration-skip: objects;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+a.btn.flyer:hover {
+	color: #fff;
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+p, h3 {
+	font-size: 150%;
+}
+
+ul {
+	margin: 20px auto;
+	padding: 35px 50px;
+	list-style: none;
+	width: fit-content;
+	border: solid 1px;
+	border-radius: 10px;
+	font-size: 125%;
+	color: whitesmoke;
+	background: linear-gradient(to bottom right, rgba(91, 149, 90, 0.75), rgba(91, 149, 90, 0.75), rgba(138, 138, 144, 0.75), rgba(138, 138, 144, 0.75));
+}

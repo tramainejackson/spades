@@ -51,17 +51,18 @@
 			<div class="">
 				<div class="bg-white py-5 px-3 fullHeight">
 					<h2 class="text-center pb-4 mb-3 mx-3 display-2" style="border-bottom:1px solid gray">Welcome</h2>
-					<p class="px-sm-5">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 64 team bracket. The first 64 teams to register will get a chance to reserve a spot to become the first true spade champion of Philly. Click <a href="{{ route('registration') }}">here</a> to register</p>
-					<p class="px-sm-5">Of course everybody plays the game a little differently depending on where you are from so we have a narrowed down the rules to most common way of playing. Check out the list of rules <a href="/rules" class="">here.</a> Rules will be attached to every table for each game</p>
-					<p class="px-sm-5">There will be a cash prize for the winner (a check will be given to the winning team). If all 64 slots are satisfied, the prize will be $1,000.</p>
-					<p class="px-sm-5">There will also be a light buffet and non-alcoholic available. The event will be BYOB.</p>
+					<p class="px-sm-5">Welcome to the first annual spades tournament. This tournament is going to be the March Madness style, 6 rounds, single game elimination. It's first come first serve so make sure you register your team early. Dont' miss out on your chance to proclaim the first true spade champion of Philly. Click <a href="{{ route('registration') }}" class="text-dark"><u>here</u></a> to register.</p>
+					<p class="px-sm-5">Of course everybody plays the game a little differently depending on where you're from so we have narrowed down the rules to most common way of playing. Check out the list of rules <a href="/rules" class="text-dark"><u>here</u>.</a> Rules will be attached to every table for each game</p>
+					<p class="px-sm-5">There will be a grand prize for the winner (a check will be given to the winning team). If all 64 slots are satisfied, the grand prizes will be $1,000.</p>
+					<p class="px-sm-5">There will also be a light buffet and a cash bar. All games will start promptly at 2:00PM on Sunday April 15th.</p>
+					<p class="px-sm-5 text-center"><a class="btn btn-lg btn-outline-success" href="{{ asset('/images/spades_flyer.jpg') }}" target="_blank">Spades Tournament Flyer</a></p>
 				</div>
 			</div>
 		
 			<div class="py-5 px-3 text-white fullHeight">
 				<h2 class="text-center pb-4 mb-3 mx-3 display-4">Registration</h2>
-				<p class="px-sm-5">To register a team click <a href="{{ route('registration') }}">here</a>. The entry fee for every team will be $50. It is first come first serve and registration will close once we have reached 64 teams. There is a no refund policy so please make sure that you provide a correct email address for notification of time and place of tournament.</p>
-				<p class="px-sm-5">If you have any questions or concerns, please feel free to email us any time at <a href="mailto:spades2spades@gmail" class="">spades2spades@gmail.</a></p>
+				<p class="px-sm-5">To register a team click <a href="{{ route('registration') }}" class="text-light"><u>here</u></a>. The entry fee for every team will be $70. It is first come first serve and registration will close once we have reached 64 teams. There is a no refund policy so please make sure that you provide a correct email address for notification of time and place of tournament.</p>
+				<p class="px-sm-5">If you have any questions or concerns, please feel free to email us any time at <a href="mailto:spades2spades@gmail" class="text-light"><u>spades2spades@gmail</u>.</a></p>
 			</div>
 		</div>
 	@endsection

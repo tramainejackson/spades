@@ -28,11 +28,11 @@ class TeamController extends Controller
      */
     public function index()
     {
-		$teams = Team::all();
-
 		if(Auth::guest()) {
+			$teams = Team::where('pif', 'Y')->get();
 			return view('teams', compact('teams'));
 		} else {
+			$teams = Team::all();
 			return view('teams.index', compact('teams'));
 		}
     }
@@ -74,13 +74,15 @@ class TeamController extends Controller
 
 			if($request->pif == null) {
 				\Mail::to($team->email)->send(new Confirmation($team));
+				\Mail::to('jackson.tramaine3@gmail.com')->send(new Confirmation($team));
+				\Mail::to('mduckett90@gmail.com')->send(new Confirmation($team));
 				return view('payment', compact('team'));
 			} else {
 				return redirect()->action('TeamController@index')->with('status', 'Team added successfully');
 			}
 
 		} else {
-			return redirect()->action('TeamController@index')->with('status', 'The max amount of teams (64 teams) has been reached and we are not accepting any more entries');
+			return redirect()->action('TeamController@index')->with('status', 'The max amount of teams (64 teams) has been reached and we are not accepting any more entries. We will keep your email on file in case any teams drop out and we will notify you.');
 		}
     }
 

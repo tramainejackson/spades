@@ -3,8 +3,9 @@
 		@php
 			$settings = \App\Setting::find(1);
 			$games = \App\Game::all();
-			$teams = \App\Team::all();
+			$teams = \App\Team::where('pif', 'Y')->get();
 		@endphp
+
 		<div class="view_schedule">
 			<div class="row">
 				<div class="col text-white">
@@ -396,7 +397,7 @@
 			@else
 				<div class="row">
 					<div class="col">
-						<h3 class="text-white">The tournament schedule will be posted on (Add Date) once registration has closed and bracket has been completed. If there is an odd number of teams, there will be playin games for the teams who register last.</h3>
+						<h3 class="text-white">The tournament schedule will be posted on 4/1/2018 once registration has closed and bracket has been completed. If there is an odd number of teams, there will be play-in games for the teams who register last.</h3>
 					</div>
 				</div>
 				<div class="row d-none d-md-block">
@@ -408,7 +409,7 @@
 								</div>
 							</div>
 							
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col">
 									@if($teamCount->count() < 64)
 										<h2 class="text-light">Remaining Open Slots 
@@ -421,7 +422,7 @@
 										</h2>
 									@endif
 								</div>
-							</div>
+							</div> -->
 							
 							<div class="row">
 								<div class="col-12">

@@ -13,7 +13,7 @@
 			@php $settings = \App\Setting::where('id', 1)->first();	@endphp
 			@if($settings->start_tourny == "N")
 				<div class="text-white px-3">
-					<p class="px-sm-5" style="font-size:125%;">The entry fee for every team will be $50. It is first come first serve and registration will close once we have reached 64 teams. The tournament is single elimination</p>
+					<p class="px-sm-5" style="font-size:125%;">The entry fee for every team will be $70. It is first come first serve and registration will close once we have reached 64 teams. The tournament is single elimination</p>
 				</div>
 				<div class="d-flex flex-column align-items-center justify-content-center m-3 px-3 pt-4 regForm">
 					<div class="">
@@ -51,29 +51,14 @@
 	@endsection
 	
 	@section('footer')
-		<footer class="d-flex justify-content-center flex-column flex-md-row bg-dark text-white text-center py-3{{ $settings->start_tourny == 'Y' ? ' fixed-bottom' : '' }}">
-			<div class="d-flex flex-column mx-auto">
-				<h2 class="">Contact Us</h2>
-				<div class="">
-					<span class="font-weight-bold pr-2">Email:</span>
-					<a href="mailto:spades2spades@gmail.com" class="underline"><u>Spades King</u></a>
-				</div>
-				<div class="">
-					<span class="font-weight-bold pr-2">Phone:</span>
-					<span>215.999.9999</span>
-				</div>
-			</div>
-			<div class="lg-divider d-md-none"></div>
-			<div class="d-flex flex-column mx-auto">
-				<p class="">10% of all proceeds will be donated to charity</p>
-				<p class=""><span class="font-weight-bold">Organized By: </span>Montrell Duckett and Tramaine Jackson</p>
-				<div class="">
-					<div class="">
-						<h5 class="mb-0">&reg;&nbsp;Registered by Tramaine</h5>
-					</div>
-				</div>
-			</div>
-		</footer>
+		@include('footer')
+		
+		@if($settings->start_tourny == 'Y')
+			<script type="text/javascript">
+				$('footer').addClass('fixed-bottom');		
+			</script>
+		@endif
+		
 		<script type="text/javascript">
 			$(".player_reg_form").submit(function(e){	
 				$('.loadingSpinner').modal('show');
