@@ -72,13 +72,16 @@ class TeamController extends Controller
 			$setting->remove_active_games();
 			$setting->create_tourney_settings();			
 
-			if($request->pif == null) {
-				\Mail::to($team->email)->send(new Confirmation($team));
-				\Mail::to('jackson.tramaine3@gmail.com')->send(new Confirmation($team));
-				\Mail::to('mduckett90@gmail.com')->send(new Confirmation($team));
+			if(Auth::guest()) {
+				// \Mail::to($team->email)->send(new Confirmation($team));
+				// \Mail::to('jackson.tramaine3@gmail.com')->send(new Confirmation($team));
+				// \Mail::to('mduckett90@gmail.com')->send(new Confirmation($team));
 				return view('payment', compact('team'));
 			} else {
-				return redirect()->action('TeamController@index')->with('status', 'Team added successfully');
+				$team->admin_created = $request->admin_created;
+				if($team->save()) {
+					return redirect()->action('TeamController@index')->with('status', 'Team added successfully');
+				}
 			}
 
 		} else {
@@ -118,16 +121,17 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
+		// dd($request);
         $team->player_1 = $request->player_1;
         $team->player_2 = $request->player_2;
         $team->email = $request->email;
         $team->team_name = $request->team_name;
         $team->pif = $request->pif;
-        $team->save();
+        $team->admin_created = $request->admin_created;
 		
-		// dd($request);
-		
-		return redirect()->action('TeamController@edit', [$team]);
+        if($team->save()) {
+			return redirect()->action('TeamController@edit', [$team]);
+		}
     }
 
     /**

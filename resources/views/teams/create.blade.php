@@ -27,19 +27,33 @@
 							{{ Form::label('player2', 'Player 2 Name', ['class' => 'form-control-label text-white']) }}
 							{{ Form::text('player2', '', ['class' => 'form-control', 'required']) }}
 						</div>
-						<div class="form-group">
-							{{ Form::label('player2', 'Paid in Full', ['class' => 'd-block form-control-label text-white']) }}
+						<div class="form-row">
+							<div class="form-group col-6">
+								{{ Form::label('pif', 'Paid in Full', ['class' => 'd-block form-control-label text-white']) }}
+								
+								<div class="btn-group">
+									<button type="button" class="btn">
+										<input type="checkbox" name="pif" value="Y" hidden />Yes
+									</button>
+									<button type="button" class="btn btn-danger">
+										<input type="checkbox" name="pif" value="N" hidden checked />No
+									</button>
+								</div>
+							</div>
 							
-							<div class="btn-group">
-								<button type="button" class="btn">
-									<input type="checkbox" name="pif" value="Y" hidden />Yes
-								</button>
-								<button type="button" class="btn btn-danger">
-									<input type="checkbox" name="pif" value="N" hidden checked />No
-								</button>
+							<div class="form-group col-6">
+								{{ Form::label('admin_created', 'Fake Team', ['class' => 'd-block form-control-label text-white']) }}
+								
+								<div class="btn-group">
+									<button type="button" class="btn">
+										<input type="checkbox" name="admin_created" value="Y" hidden />Yes
+									</button>
+									<button type="button" class="btn btn-danger">
+										<input type="checkbox" name="admin_created" value="N" hidden checked />No
+									</button>
+								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							{{ Form::submit('Add', ['class' => 'form-control btn btn-primary']) }}
 						</div>

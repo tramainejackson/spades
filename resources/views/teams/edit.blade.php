@@ -27,16 +27,30 @@
 						{{ Form::label('player2', 'Player 2 Name', ['class' => 'form-control-label text-white']) }}
 						{{ Form::text('player_2') }}
 					</div>
-					<div class="form-group">
-						{{ Form::label('pif', 'Paid in Full', ['class' => 'd-block form-control-label text-white']) }}
-						
-						<div class="btn-group">
-							<button type="button" class="btn {{ $teams->pif == 'Y' ? 'btn-success active' : '' }}">
-								<input type="checkbox" name="pif" value="Y" hidden {{ $teams->pif == 'Y' ? 'checked' : '' }} />Yes
-							</button>
-							<button type="button" class="btn px-3 {{ $teams->pif == 'N' ? 'btn-danger active' : '' }}">
-								<input type="checkbox" name="pif" value="N" hidden {{ $teams->pif == 'N' ? 'checked' : '' }} />No
-							</button>
+					<div class="form-row">
+						<div class="form-group col-6">
+							{{ Form::label('pif', 'Paid in Full', ['class' => 'd-block form-control-label text-white']) }}
+							
+							<div class="btn-group">
+								<button type="button" class="btn {{ $teams->pif == 'Y' ? 'btn-success active' : '' }}">
+									<input type="checkbox" name="pif" value="Y" hidden {{ $teams->pif == 'Y' ? 'checked' : '' }} />Yes
+								</button>
+								<button type="button" class="btn px-3 {{ $teams->pif == 'N' ? 'btn-danger active' : '' }}">
+									<input type="checkbox" name="pif" value="N" hidden {{ $teams->pif == 'N' ? 'checked' : '' }} />No
+								</button>
+							</div>
+						</div>
+						<div class="form-group col-6">
+							{{ Form::label('admin_created', 'Fake Team', ['class' => 'd-block form-control-label text-white']) }}
+							
+							<div class="btn-group">
+								<button type="button" class="btn {{ $teams->admin_created == 'Y' ? 'btn-success active' : '' }}">
+									<input type="checkbox" name="admin_created" value="Y" hidden {{ $teams->admin_created == 'Y' ? 'checked' : '' }} />Yes
+								</button>
+								<button type="button" class="btn px-3 {{ $teams->admin_created == 'N' ? 'btn-danger active' : '' }}">
+									<input type="checkbox" name="admin_created" value="N" hidden {{ $teams->admin_created == 'N' ? 'checked' : '' }} />No
+								</button>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">

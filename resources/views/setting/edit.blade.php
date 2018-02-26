@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="tournySettingsDiv bg-dark p-4 m-4 rounded" style="font-size:120%">
-			{!! Form::model($setting, ['action' => ['SettingController@update', $setting->id], 'method' => 'PATCH']) !!}
+			{!! Form::model($setting, ['action' => ['SettingController@update', $setting->id], 'method' => 'PATCH', 'files' => true]) !!}
 				<div class="form-group">
 					{{ Form::label('total_teams', 'Total Teams', ['class' => 'form-control-label text-white']) }}
 					<input type="number" name="total_teams" class="form-control" value="{{ $teams->count() == null ? 0 : $teams->count() }}" disabled />
@@ -29,6 +29,26 @@
 					{{ Form::label('champion', 'Champion', ['class' => 'form-control-label text-white']) }}
 					<input type="text" name="" class="form-control" value="{{ $setting->champion == null ? 'No Champion Yet' : $setting->champion }}" disabled />
 				</div>
+				<div class="form-group">
+					{{ Form::label('rules', 'Downloadable Rules', ['class' => 'form-control-label text-white']) }}
+					<div class="input-group">
+						<div class="custom-file">
+							<input type="file" name="rules" class="custom-file-input" id="rulesFile" />
+							{{ Form::label('rules', 'Upload Rules', ['class' => 'custom-file-label']) }}
+						</div>
+						<div class="input-group-append text-white">
+							<span class="input-group-text">Browse</span>
+						</div>
+					</div>
+				</div>
+				@if($setting->printable_rules != null)
+					<div class="form-group mt-4 d-flex align-items-center">
+						<div class="d-inline-block mr-4 text-light">
+							<h3 class="">Click To View Rules Document </h3>
+						</div>
+						<a href="{{ asset('storage/' . str_ireplace('public/', '', $setting->printable_rules)) }}" class="btn btn-light" download="2018_Spades_Tournament_Rules">View Rules</a>
+					</div>
+				@endif
 				<div class="form-group">
 					{{ Form::label('start_tourny', 'Start Tourney', ['class' => 'd-block form-control-label text-white']) }}
 					

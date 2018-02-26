@@ -98,6 +98,11 @@ class SettingController extends Controller
 			$setting->create_tourney_settings();
 		}
 		
+		if($request->hasFile('rules')) {
+			$path = $request->file('rules')->store('public/rules_forms');
+			$setting->printable_rules = $path;
+		}
+		
 		$setting->save();
 		
 		return redirect()->action('SettingController@index');

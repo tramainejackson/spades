@@ -32,7 +32,9 @@ Route::get('/registration', function () {
 })->name('registration');
 
 Route::get('/rules', function () {
-    return view('rules');
+	$setting = App\Setting::find(1);
+	
+    return view('rules', compact('setting'));
 })->name('rules');
 
 Route::get('/tournament', function () {

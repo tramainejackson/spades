@@ -11,9 +11,9 @@
 		@if($teams->isNotEmpty())
 			<div class="row">
 				@foreach ($teams as $team)
-					<div class="col-12 col-md-6 col-lg-4 text-white">
+					<div class="col-12 col-md-6 col-lg-4 text-white{{ $team->admin_created == 'Y' ? ' fakeNews' : '' }}">
 						<div class="card my-3 text-dark">
-							<div class="card-header row">
+							<div class="card-header d-flex">
 								<h2 class="col-10 text-center d-inline-block">{{ $team->team_name }}</h2>
 								<button class="col-2 btn btn-warning"><a href="/teams/{{$team->id}}/edit">Edit</a></button>
 							</div>
@@ -23,17 +23,26 @@
 								<p class="card-text">#2 - {{ $team->player_2 }}</p>
 							</div>
 							<div class="card-footer text-center">
-								<p class="">Paid In Full</p>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input type="checkbox" class="form-check-input" {{ $team->pif == "Y" ? "checked" : "" }} disabled />Yes
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input type="checkbox" class="form-check-input" {{ $team->pif == "N" ? "checked" : "" }} disabled />No
-									</label>
-								</div>
+								@if($team->admin_created == 'N')
+									<p class="">Paid In Full</p>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input" {{ $team->pif == "Y" ? "checked" : "" }} disabled />Yes
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input" {{ $team->pif == "N" ? "checked" : "" }} disabled />No
+										</label>
+									</div>
+								@else
+									<p class="">Fake Team</p>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input type="checkbox" class="form-check-input" checked disabled />Yes
+										</label>
+									</div>
+								@endif
 							</div>
 						</div>
 					</div>

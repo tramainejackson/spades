@@ -45,7 +45,11 @@
 							</ul>
 						</li>
 					</ul>
-					<h5 class="p-3 text-center">Click <a href="#" class="">here</a> to download a printable version of the rule</h5>
+					@if($setting->printable_rules != null)
+						<h5 class="p-3 text-center">Click <a href="{{ asset('storage/' . str_ireplace('public/', '', $setting->printable_rules)) }}" class="">here</a> to download a printable version of the rule</h5>
+					@else
+						<h5 class="p-3 text-center">All rules will be available at each playing table</h5>
+					@endif
 				</div>
 			</div>
 		</div>
