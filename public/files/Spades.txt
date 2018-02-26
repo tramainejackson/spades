@@ -2,9 +2,9 @@
 		Spades Tournament
 ------------------------------------
 
-Update rules link for downloadable rules
 Maybe: Add redirect confirmations(success or error)
 Maybe: Add a question form to the footer
+Done: Update rules link for downloadable rules
 Done: Send emails to me and Trell when registered
 Done: Add address and time to registration email and website
 Done: Add flyer to the website
