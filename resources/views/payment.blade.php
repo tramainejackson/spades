@@ -8,7 +8,7 @@
 		</div>
 		<div class="row flex-column align-items-center justify-content-center mt-3" style="position:relative">
 			<div class="p-4 my-4">
-				<a href="https://www.paypal.me/actionjack/70" class="">
+				<a href="https://paypal.me/pools/c/82fi87eAal" class="">
 					<div class="text-center" style="">
 						<img src="/images/paypal_icon.png" class="img-fluid" style="max-height:250px;" />
 					</div>

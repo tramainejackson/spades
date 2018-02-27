@@ -73,9 +73,9 @@ class TeamController extends Controller
 			$setting->create_tourney_settings();			
 
 			if(Auth::guest()) {
-				// \Mail::to($team->email)->send(new Confirmation($team));
-				// \Mail::to('jackson.tramaine3@gmail.com')->send(new Confirmation($team));
-				// \Mail::to('mduckett90@gmail.com')->send(new Confirmation($team));
+				\Mail::to($team->email)->send(new Confirmation($team));
+				\Mail::to('jackson.tramaine3@gmail.com')->send(new Confirmation($team));
+				\Mail::to('mduckett90@gmail.com')->send(new Confirmation($team));
 				return view('payment', compact('team'));
 			} else {
 				$team->admin_created = $request->admin_created;
