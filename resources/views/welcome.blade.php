@@ -12,6 +12,24 @@
 	@endsection
 	
 	@section('content')
+		<!-- Postponed Message -->
+		<div class="modal fade" id="postponed">
+			<div class="modal-dialog" role="document" style="position: absolute; left: 35%;width: 50%;">
+				<div class="modal-content">
+					<div class="modal-header align-items-center justify-content-between">
+						<h3 class="m-0">DATE CHANGE</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p class="">We want to first thank everyone who signed up and who are planning to attend the spades tournament. This is an update to notify eveyone that the date has been changed to Sunday July 8th, 2018. If you have registered a team, you should have received an email with this information already. Please feel free to reach out us if you have any additional questions. Our contact information is listed at the bottom of the page.<br/><br/>Thanks,<br/><br/>Tramaine</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Postponed Message -->
+		
 		<div class="row flex-column align-items-center justify-content-center welcomeHeader" style="position:relative">
 			<div class="text-white my-5 fullHeight" style="">
 				<h1 class="text-center">Philly</h1>
@@ -72,7 +90,12 @@
 		@include('footer')
 		
 		<script type="text/javascript">
-			$('nav ul li:first-of-type a').addClass('active');			
+			// Bring up postponed modal after header animation
+			setTimeout(function() {
+				$('#postponed').modal('show');				
+			}, 2500);
+			
+			$('nav ul li:first-of-type a').addClass('active');	
 		</script>
 		
 		@if($setting->champion != null)

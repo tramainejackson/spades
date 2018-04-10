@@ -27,6 +27,20 @@ canvas {
 	display: none;
 }
 
+.modal .modal-header button span {
+	background: darkgreen;
+    padding: 40%;
+    border-radius: 100%;
+    line-height: normal;
+    color: white;
+    text-shadow: initial;
+}
+
+.modal-header .close {
+    margin-left: initial;
+	float: initial;
+}
+
 .teamCount {
     background: rgba(143, 188, 143, 0.95);
     padding: 2%;
