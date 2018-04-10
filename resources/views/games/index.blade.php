@@ -546,7 +546,7 @@
 		
 		@if($settings->total_rounds == NULL ||  $settings->total_rounds < 2 || $settings->start_tourny == 'N')
 			<script type="text/javascript">
-				$('footer').addClass('fixed-bottom');		
+				$('footer').addClass('fixed-bottom');	
 			</script>
 		@endif
 		
